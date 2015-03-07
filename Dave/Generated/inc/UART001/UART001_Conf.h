@@ -64,7 +64,7 @@ extern "C" {
 /*Base Address of mapped USIC Module for App Instance 0 */
 #define UART001_0_USIC 	  USIC0
 /*Base Address of mapped USIC Channel for App Instance 0 */
-#define UART001_0_USIC_CH  USIC0_CH1
+#define UART001_0_USIC_CH  USIC0_CH0
 /*USIC0 peripheral module has been configured */
 #define UART001_PER0_USIC0_ENABLED
 /*Macro specifying the transmit FIFO buffer has been enabled */

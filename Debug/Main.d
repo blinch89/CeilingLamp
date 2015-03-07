@@ -22,7 +22,7 @@ Main.d Main.o: ../Main.c \
  C:\DAVE3_workspace\ws3.1.10\CeilingLamp\Dave\Generated\inc\DAVESupport/../../inc/NVIC002/NVIC002.h \
  C:\DAVE3_workspace\ws3.1.10\CeilingLamp\Dave\Generated\inc\DAVESupport/../../inc/NVIC002/NVIC002_Conf.h \
  C:\DAVE3_workspace\ws3.1.10\CeilingLamp\Dave\Generated\inc\DAVESupport/../../inc/NVIC002/NVIC002_Extern.h \
- ../colorManagement.h ../GPIO.h
+ ../light_ws2812_cortex.h ../GPIO.h
 
 C:\DAVE3_workspace\ws3.1.10\CeilingLamp\Dave\Generated\inc\DAVESupport/DAVE3.h:
 
@@ -70,6 +70,6 @@ C:\DAVE3_workspace\ws3.1.10\CeilingLamp\Dave\Generated\inc\DAVESupport/../../inc
 
 C:\DAVE3_workspace\ws3.1.10\CeilingLamp\Dave\Generated\inc\DAVESupport/../../inc/NVIC002/NVIC002_Extern.h:
 
-../colorManagement.h:
+../light_ws2812_cortex.h:
 
 ../GPIO.h:

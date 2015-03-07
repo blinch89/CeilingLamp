@@ -113,7 +113,7 @@
   89:../Dave/Generated/src/CLK002/CLK002.c **** **  0                    Private Macro Definitions                             **
   90:../Dave/Generated/src/CLK002/CLK002.c **** *******************************************************************************/
   91:../Dave/Generated/src/CLK002/CLK002.c **** /* Master Clock setup parameters */  
-  92:../Dave/Generated/src/CLK002/CLK002.c **** #define   CLK002_CLKCR_PCLKSEL           (0U)
+  92:../Dave/Generated/src/CLK002/CLK002.c **** #define   CLK002_CLKCR_PCLKSEL           (1U)
   93:../Dave/Generated/src/CLK002/CLK002.c **** #define   CLK002_CLKCR_IDIV              (4U)      
   94:../Dave/Generated/src/CLK002/CLK002.c **** #define   CLK002_CLKCR_FDIV              (0U)    
   95:../Dave/Generated/src/CLK002/CLK002.c **** #define   CLK002_DIRECT_ACCESS_ALLOW     (0xC0U)
@@ -160,7 +160,7 @@
  126:../Dave/Generated/src/CLK002/CLK002.c ****     /* Open the lock that protects privileged bits. */
  127:../Dave/Generated/src/CLK002/CLK002.c ****     SCU_GENERAL->PASSWD = CLK002_DIRECT_ACCESS_ALLOW;
   36              		.loc 1 127 0
-  37 0004 0A4B     		ldr	r3, .L3
+  37 0004 0C4B     		ldr	r3, .L3
   38 0006 C022     		mov	r2, #192
   39 0008 5A62     		str	r2, [r3, #36]
  128:../Dave/Generated/src/CLK002/CLK002.c **** 
@@ -170,7 +170,7 @@
   41 000a C046     		mov	r8, r8
   42              	.L2:
   43              		.loc 1 130 0 is_stmt 0 discriminator 1
-  44 000c 084B     		ldr	r3, .L3
+  44 000c 0A4B     		ldr	r3, .L3
   45 000e 5A6A     		ldr	r2, [r3, #36]
   46 0010 0423     		mov	r3, #4
   47 0012 1340     		and	r3, r2
@@ -182,46 +182,49 @@
  135:../Dave/Generated/src/CLK002/CLK002.c ****     /* Update PCLK selection mux. */
  136:../Dave/Generated/src/CLK002/CLK002.c ****     SCU_CLK->CLKCR|=(((uint32_t)CLK002_CLKCR_PCLKSEL<<\
   49              		.loc 1 136 0 is_stmt 1
-  50 0016 074B     		ldr	r3, .L3+4
-  51 0018 064A     		ldr	r2, .L3+4
+  50 0016 094B     		ldr	r3, .L3+4
+  51 0018 084A     		ldr	r2, .L3+4
   52 001a 1268     		ldr	r2, [r2]
-  53 001c 1A60     		str	r2, [r3]
+  53 001c 8021     		mov	r1, #128
+  54 001e 4902     		lsl	r1, r1, #9
+  55 0020 0A43     		orr	r2, r1
+  56 0022 1A60     		str	r2, [r3]
  137:../Dave/Generated/src/CLK002/CLK002.c **** 	             (uint32_t)SCU_CLK_CLKCR_PCLKSEL_Pos)&SCU_CLK_CLKCR_PCLKSEL_Msk);
  138:../Dave/Generated/src/CLK002/CLK002.c **** 
  139:../Dave/Generated/src/CLK002/CLK002.c ****     CLK002_lDivUpdate();
-  54              		.loc 1 139 0
-  55 001e FFF7FEFF 		bl	CLK002_lDivUpdate
+  57              		.loc 1 139 0
+  58 0024 FFF7FEFF 		bl	CLK002_lDivUpdate
  140:../Dave/Generated/src/CLK002/CLK002.c **** 
  141:../Dave/Generated/src/CLK002/CLK002.c ****     /*Close the lock opened above. */
  142:../Dave/Generated/src/CLK002/CLK002.c ****     SCU_GENERAL->PASSWD = CLK002_DIRECT_ACCESS_DISALLOW;
-  56              		.loc 1 142 0
-  57 0022 034B     		ldr	r3, .L3
-  58 0024 C322     		mov	r2, #195
-  59 0026 5A62     		str	r2, [r3, #36]
+  59              		.loc 1 142 0
+  60 0028 034B     		ldr	r3, .L3
+  61 002a C322     		mov	r2, #195
+  62 002c 5A62     		str	r2, [r3, #36]
  143:../Dave/Generated/src/CLK002/CLK002.c **** 
  144:../Dave/Generated/src/CLK002/CLK002.c ****     /* Update the clock variable */
  145:../Dave/Generated/src/CLK002/CLK002.c ****     SystemCoreClockUpdate();
-  60              		.loc 1 145 0
-  61 0028 FFF7FEFF 		bl	SystemCoreClockUpdate
+  63              		.loc 1 145 0
+  64 002e FFF7FEFF 		bl	SystemCoreClockUpdate
  146:../Dave/Generated/src/CLK002/CLK002.c **** }
-  62              		.loc 1 146 0
-  63 002c BD46     		mov	sp, r7
-  64              		@ sp needed for prologue
-  65 002e 80BD     		pop	{r7, pc}
-  66              	.L4:
-  67              		.align	2
-  68              	.L3:
-  69 0030 00000140 		.word	1073807360
-  70 0034 00030140 		.word	1073808128
-  71              		.cfi_endproc
-  72              	.LFE38:
-  74              		.section	.text.AllowClkInitByStartup,"ax",%progbits
-  75              		.align	2
-  76              		.global	AllowClkInitByStartup
-  77              		.code	16
-  78              		.thumb_func
-  80              	AllowClkInitByStartup:
-  81              	.LFB39:
+  65              		.loc 1 146 0
+  66 0032 BD46     		mov	sp, r7
+  67              		@ sp needed for prologue
+  68 0034 80BD     		pop	{r7, pc}
+  69              	.L4:
+  70 0036 C046     		.align	2
+  71              	.L3:
+  72 0038 00000140 		.word	1073807360
+  73 003c 00030140 		.word	1073808128
+  74              		.cfi_endproc
+  75              	.LFE38:
+  77              		.section	.text.AllowClkInitByStartup,"ax",%progbits
+  78              		.align	2
+  79              		.global	AllowClkInitByStartup
+  80              		.code	16
+  81              		.thumb_func
+  83              	AllowClkInitByStartup:
+  84              	.LFB39:
  147:../Dave/Generated/src/CLK002/CLK002.c **** 
  148:../Dave/Generated/src/CLK002/CLK002.c **** /**
  149:../Dave/Generated/src/CLK002/CLK002.c **** * @brief  This routine is called by CMSIS startup to find out if clock tree
@@ -237,34 +240,34 @@
  159:../Dave/Generated/src/CLK002/CLK002.c **** 
  160:../Dave/Generated/src/CLK002/CLK002.c **** uint32_t AllowClkInitByStartup(void)
  161:../Dave/Generated/src/CLK002/CLK002.c **** {
-  82              		.loc 1 161 0
-  83              		.cfi_startproc
-  84 0000 80B5     		push	{r7, lr}
-  85              	.LCFI2:
-  86              		.cfi_def_cfa_offset 8
-  87              		.cfi_offset 7, -8
-  88              		.cfi_offset 14, -4
-  89 0002 00AF     		add	r7, sp, #0
-  90              	.LCFI3:
-  91              		.cfi_def_cfa_register 7
+  85              		.loc 1 161 0
+  86              		.cfi_startproc
+  87 0000 80B5     		push	{r7, lr}
+  88              	.LCFI2:
+  89              		.cfi_def_cfa_offset 8
+  90              		.cfi_offset 7, -8
+  91              		.cfi_offset 14, -4
+  92 0002 00AF     		add	r7, sp, #0
+  93              	.LCFI3:
+  94              		.cfi_def_cfa_register 7
  162:../Dave/Generated/src/CLK002/CLK002.c ****     /* Return FALSE - Do not allow any initialisation by startup code. */
  163:../Dave/Generated/src/CLK002/CLK002.c ****     return ((uint32_t)0);
-  92              		.loc 1 163 0
-  93 0004 0023     		mov	r3, #0
+  95              		.loc 1 163 0
+  96 0004 0023     		mov	r3, #0
  164:../Dave/Generated/src/CLK002/CLK002.c **** }
-  94              		.loc 1 164 0
-  95 0006 181C     		mov	r0, r3
-  96 0008 BD46     		mov	sp, r7
-  97              		@ sp needed for prologue
-  98 000a 80BD     		pop	{r7, pc}
-  99              		.cfi_endproc
- 100              	.LFE39:
- 102              		.section	.text.CLK002_lDivUpdate,"ax",%progbits
- 103              		.align	2
- 104              		.code	16
- 105              		.thumb_func
- 107              	CLK002_lDivUpdate:
- 108              	.LFB40:
+  97              		.loc 1 164 0
+  98 0006 181C     		mov	r0, r3
+  99 0008 BD46     		mov	sp, r7
+ 100              		@ sp needed for prologue
+ 101 000a 80BD     		pop	{r7, pc}
+ 102              		.cfi_endproc
+ 103              	.LFE39:
+ 105              		.section	.text.CLK002_lDivUpdate,"ax",%progbits
+ 106              		.align	2
+ 107              		.code	16
+ 108              		.thumb_func
+ 110              	CLK002_lDivUpdate:
+ 111              	.LFB40:
  165:../Dave/Generated/src/CLK002/CLK002.c **** /*******************************************************************************
  166:../Dave/Generated/src/CLK002/CLK002.c **** **                 Private Function definition:
  167:../Dave/Generated/src/CLK002/CLK002.c **** *******************************************************************************/
@@ -277,84 +280,84 @@
  174:../Dave/Generated/src/CLK002/CLK002.c ****   */
  175:../Dave/Generated/src/CLK002/CLK002.c **** static void CLK002_lDivUpdate(void)
  176:../Dave/Generated/src/CLK002/CLK002.c **** {
- 109              		.loc 1 176 0
- 110              		.cfi_startproc
- 111 0000 80B5     		push	{r7, lr}
- 112              	.LCFI4:
- 113              		.cfi_def_cfa_offset 8
- 114              		.cfi_offset 7, -8
- 115              		.cfi_offset 14, -4
- 116 0002 84B0     		sub	sp, sp, #16
- 117              	.LCFI5:
- 118              		.cfi_def_cfa_offset 24
- 119 0004 00AF     		add	r7, sp, #0
- 120              	.LCFI6:
- 121              		.cfi_def_cfa_register 7
+ 112              		.loc 1 176 0
+ 113              		.cfi_startproc
+ 114 0000 80B5     		push	{r7, lr}
+ 115              	.LCFI4:
+ 116              		.cfi_def_cfa_offset 8
+ 117              		.cfi_offset 7, -8
+ 118              		.cfi_offset 14, -4
+ 119 0002 84B0     		sub	sp, sp, #16
+ 120              	.LCFI5:
+ 121              		.cfi_def_cfa_offset 24
+ 122 0004 00AF     		add	r7, sp, #0
+ 123              	.LCFI6:
+ 124              		.cfi_def_cfa_register 7
  177:../Dave/Generated/src/CLK002/CLK002.c ****  /*  Find out current and target value of idiv */
  178:../Dave/Generated/src/CLK002/CLK002.c ****  uint32_t lCurrIdiv= (uint32_t) 0;      /* Current idiv. */
- 122              		.loc 1 178 0
- 123 0006 0023     		mov	r3, #0
- 124 0008 FB60     		str	r3, [r7, #12]
+ 125              		.loc 1 178 0
+ 126 0006 0023     		mov	r3, #0
+ 127 0008 FB60     		str	r3, [r7, #12]
  179:../Dave/Generated/src/CLK002/CLK002.c ****  uint32_t lTargetidiv= (uint32_t) 0;    /* Target idiv. */
- 125              		.loc 1 179 0
- 126 000a 0023     		mov	r3, #0
- 127 000c BB60     		str	r3, [r7, #8]
+ 128              		.loc 1 179 0
+ 129 000a 0023     		mov	r3, #0
+ 130 000c BB60     		str	r3, [r7, #8]
  180:../Dave/Generated/src/CLK002/CLK002.c ****  uint32_t lCLKCR;
  181:../Dave/Generated/src/CLK002/CLK002.c ****  lCurrIdiv = (((SCU_CLK->CLKCR)&SCU_CLK_CLKCR_IDIV_Msk)>>SCU_CLK_CLKCR_IDIV_Pos);
- 128              		.loc 1 181 0
- 129 000e 184B     		ldr	r3, .L11
- 130 0010 1A68     		ldr	r2, [r3]
- 131 0012 FF23     		mov	r3, #255
- 132 0014 1B02     		lsl	r3, r3, #8
- 133 0016 1340     		and	r3, r2
- 134 0018 1B0A     		lsr	r3, r3, #8
- 135 001a FB60     		str	r3, [r7, #12]
+ 131              		.loc 1 181 0
+ 132 000e 184B     		ldr	r3, .L11
+ 133 0010 1A68     		ldr	r2, [r3]
+ 134 0012 FF23     		mov	r3, #255
+ 135 0014 1B02     		lsl	r3, r3, #8
+ 136 0016 1340     		and	r3, r2
+ 137 0018 1B0A     		lsr	r3, r3, #8
+ 138 001a FB60     		str	r3, [r7, #12]
  182:../Dave/Generated/src/CLK002/CLK002.c ****  lTargetidiv = CLK002_CLKCR_IDIV;
- 136              		.loc 1 182 0
- 137 001c 0423     		mov	r3, #4
- 138 001e BB60     		str	r3, [r7, #8]
+ 139              		.loc 1 182 0
+ 140 001c 0423     		mov	r3, #4
+ 141 001e BB60     		str	r3, [r7, #8]
  183:../Dave/Generated/src/CLK002/CLK002.c **** 
  184:../Dave/Generated/src/CLK002/CLK002.c ****  /* Update FDIV here, unconditionally. */
  185:../Dave/Generated/src/CLK002/CLK002.c **** 
  186:../Dave/Generated/src/CLK002/CLK002.c ****   lCLKCR = SCU_CLK->CLKCR;
- 139              		.loc 1 186 0
- 140 0020 134B     		ldr	r3, .L11
- 141 0022 1B68     		ldr	r3, [r3]
- 142 0024 7B60     		str	r3, [r7, #4]
+ 142              		.loc 1 186 0
+ 143 0020 134B     		ldr	r3, .L11
+ 144 0022 1B68     		ldr	r3, [r3]
+ 145 0024 7B60     		str	r3, [r7, #4]
  187:../Dave/Generated/src/CLK002/CLK002.c ****   WR_REG(lCLKCR, SCU_CLK_CLKCR_FDIV_Msk, SCU_CLK_CLKCR_FDIV_Pos,CLK002_CLKCR_FDIV);
- 143              		.loc 1 187 0
- 144 0026 7B68     		ldr	r3, [r7, #4]
- 145 0028 FF22     		mov	r2, #255
- 146 002a 9343     		bic	r3, r2
- 147 002c 7B60     		str	r3, [r7, #4]
+ 146              		.loc 1 187 0
+ 147 0026 7B68     		ldr	r3, [r7, #4]
+ 148 0028 FF22     		mov	r2, #255
+ 149 002a 9343     		bic	r3, r2
+ 150 002c 7B60     		str	r3, [r7, #4]
  188:../Dave/Generated/src/CLK002/CLK002.c ****   SCU_CLK->CLKCR = lCLKCR;
- 148              		.loc 1 188 0
- 149 002e 104B     		ldr	r3, .L11
- 150 0030 7A68     		ldr	r2, [r7, #4]
- 151 0032 1A60     		str	r2, [r3]
+ 151              		.loc 1 188 0
+ 152 002e 104B     		ldr	r3, .L11
+ 153 0030 7A68     		ldr	r2, [r7, #4]
+ 154 0032 1A60     		str	r2, [r3]
  189:../Dave/Generated/src/CLK002/CLK002.c **** 
  190:../Dave/Generated/src/CLK002/CLK002.c ****      /* Delay, till frequency stable, appox. 15us. */
  191:../Dave/Generated/src/CLK002/CLK002.c **** 
  192:../Dave/Generated/src/CLK002/CLK002.c **** 
  193:../Dave/Generated/src/CLK002/CLK002.c ****   WR_REG(SCU_CLK->CLKCR, SCU_CLK_CLKCR_CNTADJ_Msk, SCU_CLK_CLKCR_CNTADJ_Pos,CLK002_DELAYCNT);
- 152              		.loc 1 193 0
- 153 0034 0E4B     		ldr	r3, .L11
- 154 0036 0E4A     		ldr	r2, .L11
- 155 0038 1268     		ldr	r2, [r2]
- 156 003a 0E49     		ldr	r1, .L11+4
- 157 003c 0A43     		orr	r2, r1
- 158 003e 1A60     		str	r2, [r3]
+ 155              		.loc 1 193 0
+ 156 0034 0E4B     		ldr	r3, .L11
+ 157 0036 0E4A     		ldr	r2, .L11
+ 158 0038 1268     		ldr	r2, [r2]
+ 159 003a 0E49     		ldr	r1, .L11+4
+ 160 003c 0A43     		orr	r2, r1
+ 161 003e 1A60     		str	r2, [r3]
  194:../Dave/Generated/src/CLK002/CLK002.c ****   while (SCU_CLK->CLKCR&(SCU_CLK_CLKCR_VDDC2LOW_Msk))
- 159              		.loc 1 194 0
- 160 0040 C046     		mov	r8, r8
- 161              	.L8:
- 162              		.loc 1 194 0 is_stmt 0 discriminator 1
- 163 0042 0B4B     		ldr	r3, .L11
- 164 0044 1A68     		ldr	r2, [r3]
- 165 0046 8023     		mov	r3, #128
- 166 0048 DB05     		lsl	r3, r3, #23
- 167 004a 1340     		and	r3, r2
- 168 004c F9D1     		bne	.L8
+ 162              		.loc 1 194 0
+ 163 0040 C046     		mov	r8, r8
+ 164              	.L8:
+ 165              		.loc 1 194 0 is_stmt 0 discriminator 1
+ 166 0042 0B4B     		ldr	r3, .L11
+ 167 0044 1A68     		ldr	r2, [r3]
+ 168 0046 8023     		mov	r3, #128
+ 169 0048 DB05     		lsl	r3, r3, #23
+ 170 004a 1340     		and	r3, r2
+ 171 004c F9D1     		bne	.L8
  195:../Dave/Generated/src/CLK002/CLK002.c ****   {
  196:../Dave/Generated/src/CLK002/CLK002.c ****     ;
  197:../Dave/Generated/src/CLK002/CLK002.c ****   }
@@ -362,54 +365,54 @@
  199:../Dave/Generated/src/CLK002/CLK002.c **** 
  200:../Dave/Generated/src/CLK002/CLK002.c ****     /* Find out current value of direction in which idiv has to update. */
  201:../Dave/Generated/src/CLK002/CLK002.c ****  if (lCurrIdiv==lTargetidiv)
- 169              		.loc 1 201 0 is_stmt 1
- 170 004e FA68     		ldr	r2, [r7, #12]
- 171 0050 BB68     		ldr	r3, [r7, #8]
- 172 0052 9A42     		cmp	r2, r3
- 173 0054 08D0     		beq	.L7
+ 172              		.loc 1 201 0 is_stmt 1
+ 173 004e FA68     		ldr	r2, [r7, #12]
+ 174 0050 BB68     		ldr	r3, [r7, #8]
+ 175 0052 9A42     		cmp	r2, r3
+ 176 0054 08D0     		beq	.L7
  202:../Dave/Generated/src/CLK002/CLK002.c ****   {
  203:../Dave/Generated/src/CLK002/CLK002.c ****    /*No change in IDIV. */
  204:../Dave/Generated/src/CLK002/CLK002.c ****   }
  205:../Dave/Generated/src/CLK002/CLK002.c ****  else if(lCurrIdiv < lTargetidiv)
- 174              		.loc 1 205 0
- 175 0056 FA68     		ldr	r2, [r7, #12]
- 176 0058 BB68     		ldr	r3, [r7, #8]
- 177 005a 9A42     		cmp	r2, r3
- 178 005c 02D2     		bcs	.L10
+ 177              		.loc 1 205 0
+ 178 0056 FA68     		ldr	r2, [r7, #12]
+ 179 0058 BB68     		ldr	r3, [r7, #8]
+ 180 005a 9A42     		cmp	r2, r3
+ 181 005c 02D2     		bcs	.L10
  206:../Dave/Generated/src/CLK002/CLK002.c ****   {
  207:../Dave/Generated/src/CLK002/CLK002.c ****     CLK002_lFrequencyDownScaling();
- 179              		.loc 1 207 0
- 180 005e FFF7FEFF 		bl	CLK002_lFrequencyDownScaling
- 181 0062 01E0     		b	.L7
- 182              	.L10:
+ 182              		.loc 1 207 0
+ 183 005e FFF7FEFF 		bl	CLK002_lFrequencyDownScaling
+ 184 0062 01E0     		b	.L7
+ 185              	.L10:
  208:../Dave/Generated/src/CLK002/CLK002.c ****   }
  209:../Dave/Generated/src/CLK002/CLK002.c ****   else
  210:../Dave/Generated/src/CLK002/CLK002.c ****    {
  211:../Dave/Generated/src/CLK002/CLK002.c ****      CLK002_lFrequencyUpScaling();
- 183              		.loc 1 211 0
- 184 0064 FFF7FEFF 		bl	CLK002_lFrequencyUpScaling
- 185              	.L7:
+ 186              		.loc 1 211 0
+ 187 0064 FFF7FEFF 		bl	CLK002_lFrequencyUpScaling
+ 188              	.L7:
  212:../Dave/Generated/src/CLK002/CLK002.c ****    }
  213:../Dave/Generated/src/CLK002/CLK002.c **** 
  214:../Dave/Generated/src/CLK002/CLK002.c **** }
- 186              		.loc 1 214 0
- 187 0068 BD46     		mov	sp, r7
- 188 006a 04B0     		add	sp, sp, #16
- 189              		@ sp needed for prologue
- 190 006c 80BD     		pop	{r7, pc}
- 191              	.L12:
- 192 006e C046     		.align	2
- 193              	.L11:
- 194 0070 00030140 		.word	1073808128
- 195 0074 0000F03F 		.word	1072693248
- 196              		.cfi_endproc
- 197              	.LFE40:
- 199              		.section	.text.CLK002_lFrequencyUpScaling,"ax",%progbits
- 200              		.align	2
- 201              		.code	16
- 202              		.thumb_func
- 204              	CLK002_lFrequencyUpScaling:
- 205              	.LFB41:
+ 189              		.loc 1 214 0
+ 190 0068 BD46     		mov	sp, r7
+ 191 006a 04B0     		add	sp, sp, #16
+ 192              		@ sp needed for prologue
+ 193 006c 80BD     		pop	{r7, pc}
+ 194              	.L12:
+ 195 006e C046     		.align	2
+ 196              	.L11:
+ 197 0070 00030140 		.word	1073808128
+ 198 0074 0000F03F 		.word	1072693248
+ 199              		.cfi_endproc
+ 200              	.LFE40:
+ 202              		.section	.text.CLK002_lFrequencyUpScaling,"ax",%progbits
+ 203              		.align	2
+ 204              		.code	16
+ 205              		.thumb_func
+ 207              	CLK002_lFrequencyUpScaling:
+ 208              	.LFB41:
  215:../Dave/Generated/src/CLK002/CLK002.c **** 
  216:../Dave/Generated/src/CLK002/CLK002.c **** /**
  217:../Dave/Generated/src/CLK002/CLK002.c ****   * @brief  Function to provide frequency up scaling.
@@ -419,105 +422,105 @@
  221:../Dave/Generated/src/CLK002/CLK002.c ****   */
  222:../Dave/Generated/src/CLK002/CLK002.c **** static void     CLK002_lFrequencyUpScaling()
  223:../Dave/Generated/src/CLK002/CLK002.c **** {
- 206              		.loc 1 223 0
- 207              		.cfi_startproc
- 208 0000 80B5     		push	{r7, lr}
- 209              	.LCFI7:
- 210              		.cfi_def_cfa_offset 8
- 211              		.cfi_offset 7, -8
- 212              		.cfi_offset 14, -4
- 213 0002 84B0     		sub	sp, sp, #16
- 214              	.LCFI8:
- 215              		.cfi_def_cfa_offset 24
- 216 0004 00AF     		add	r7, sp, #0
- 217              	.LCFI9:
- 218              		.cfi_def_cfa_register 7
+ 209              		.loc 1 223 0
+ 210              		.cfi_startproc
+ 211 0000 80B5     		push	{r7, lr}
+ 212              	.LCFI7:
+ 213              		.cfi_def_cfa_offset 8
+ 214              		.cfi_offset 7, -8
+ 215              		.cfi_offset 14, -4
+ 216 0002 84B0     		sub	sp, sp, #16
+ 217              	.LCFI8:
+ 218              		.cfi_def_cfa_offset 24
+ 219 0004 00AF     		add	r7, sp, #0
+ 220              	.LCFI9:
+ 221              		.cfi_def_cfa_register 7
  224:../Dave/Generated/src/CLK002/CLK002.c ****   uint32_t CurrIdiv;
  225:../Dave/Generated/src/CLK002/CLK002.c ****   uint32_t TargetIdiv;
  226:../Dave/Generated/src/CLK002/CLK002.c ****   uint32_t lCLKCR;
  227:../Dave/Generated/src/CLK002/CLK002.c ****   CurrIdiv = (((SCU_CLK->CLKCR)&SCU_CLK_CLKCR_IDIV_Msk)>>SCU_CLK_CLKCR_IDIV_Pos);
- 219              		.loc 1 227 0
- 220 0006 2A4B     		ldr	r3, .L22
- 221 0008 1A68     		ldr	r2, [r3]
- 222 000a FF23     		mov	r3, #255
- 223 000c 1B02     		lsl	r3, r3, #8
- 224 000e 1340     		and	r3, r2
- 225 0010 1B0A     		lsr	r3, r3, #8
- 226 0012 FB60     		str	r3, [r7, #12]
+ 222              		.loc 1 227 0
+ 223 0006 2A4B     		ldr	r3, .L22
+ 224 0008 1A68     		ldr	r2, [r3]
+ 225 000a FF23     		mov	r3, #255
+ 226 000c 1B02     		lsl	r3, r3, #8
+ 227 000e 1340     		and	r3, r2
+ 228 0010 1B0A     		lsr	r3, r3, #8
+ 229 0012 FB60     		str	r3, [r7, #12]
  228:../Dave/Generated/src/CLK002/CLK002.c ****   TargetIdiv = CLK002_CLKCR_IDIV;
- 227              		.loc 1 228 0
- 228 0014 0423     		mov	r3, #4
- 229 0016 BB60     		str	r3, [r7, #8]
- 230              	.L19:
+ 230              		.loc 1 228 0
+ 231 0014 0423     		mov	r3, #4
+ 232 0016 BB60     		str	r3, [r7, #8]
+ 233              	.L19:
  229:../Dave/Generated/src/CLK002/CLK002.c ****   while(1)
  230:../Dave/Generated/src/CLK002/CLK002.c ****   {
  231:../Dave/Generated/src/CLK002/CLK002.c ****     if(CurrIdiv > (TargetIdiv * 4UL))
- 231              		.loc 1 231 0
- 232 0018 BB68     		ldr	r3, [r7, #8]
- 233 001a 9A00     		lsl	r2, r3, #2
- 234 001c FB68     		ldr	r3, [r7, #12]
- 235 001e 9A42     		cmp	r2, r3
- 236 0020 24D2     		bcs	.L14
+ 234              		.loc 1 231 0
+ 235 0018 BB68     		ldr	r3, [r7, #8]
+ 236 001a 9A00     		lsl	r2, r3, #2
+ 237 001c FB68     		ldr	r3, [r7, #12]
+ 238 001e 9A42     		cmp	r2, r3
+ 239 0020 24D2     		bcs	.L14
  232:../Dave/Generated/src/CLK002/CLK002.c ****     {
  233:../Dave/Generated/src/CLK002/CLK002.c ****         CurrIdiv = (CurrIdiv & 0xFFFFFFFCU) + 4U;
- 237              		.loc 1 233 0
- 238 0022 FB68     		ldr	r3, [r7, #12]
- 239 0024 0322     		mov	r2, #3
- 240 0026 9343     		bic	r3, r2
- 241 0028 0433     		add	r3, r3, #4
- 242 002a FB60     		str	r3, [r7, #12]
+ 240              		.loc 1 233 0
+ 241 0022 FB68     		ldr	r3, [r7, #12]
+ 242 0024 0322     		mov	r2, #3
+ 243 0026 9343     		bic	r3, r2
+ 244 0028 0433     		add	r3, r3, #4
+ 245 002a FB60     		str	r3, [r7, #12]
  234:../Dave/Generated/src/CLK002/CLK002.c ****         CurrIdiv  = CurrIdiv >> 2;   /* Divide by 4. */
- 243              		.loc 1 234 0
- 244 002c FB68     		ldr	r3, [r7, #12]
- 245 002e 9B08     		lsr	r3, r3, #2
- 246 0030 FB60     		str	r3, [r7, #12]
+ 246              		.loc 1 234 0
+ 247 002c FB68     		ldr	r3, [r7, #12]
+ 248 002e 9B08     		lsr	r3, r3, #2
+ 249 0030 FB60     		str	r3, [r7, #12]
  235:../Dave/Generated/src/CLK002/CLK002.c ****         /* Program interim value of IDIV. */
  236:../Dave/Generated/src/CLK002/CLK002.c **** 
  237:../Dave/Generated/src/CLK002/CLK002.c ****         lCLKCR = SCU_CLK->CLKCR;
- 247              		.loc 1 237 0
- 248 0032 1F4B     		ldr	r3, .L22
- 249 0034 1B68     		ldr	r3, [r3]
- 250 0036 7B60     		str	r3, [r7, #4]
+ 250              		.loc 1 237 0
+ 251 0032 1F4B     		ldr	r3, .L22
+ 252 0034 1B68     		ldr	r3, [r3]
+ 253 0036 7B60     		str	r3, [r7, #4]
  238:../Dave/Generated/src/CLK002/CLK002.c ****         WR_REG(lCLKCR, SCU_CLK_CLKCR_IDIV_Msk, SCU_CLK_CLKCR_IDIV_Pos,CurrIdiv);
- 251              		.loc 1 238 0
- 252 0038 FB68     		ldr	r3, [r7, #12]
- 253 003a 1B02     		lsl	r3, r3, #8
- 254 003c 1B04     		lsl	r3, r3, #16
- 255 003e 1A0C     		lsr	r2, r3, #16
- 256 0040 7968     		ldr	r1, [r7, #4]
- 257 0042 1C4B     		ldr	r3, .L22+4
- 258 0044 0B40     		and	r3, r1
- 259 0046 1343     		orr	r3, r2
- 260 0048 7B60     		str	r3, [r7, #4]
+ 254              		.loc 1 238 0
+ 255 0038 FB68     		ldr	r3, [r7, #12]
+ 256 003a 1B02     		lsl	r3, r3, #8
+ 257 003c 1B04     		lsl	r3, r3, #16
+ 258 003e 1A0C     		lsr	r2, r3, #16
+ 259 0040 7968     		ldr	r1, [r7, #4]
+ 260 0042 1C4B     		ldr	r3, .L22+4
+ 261 0044 0B40     		and	r3, r1
+ 262 0046 1343     		orr	r3, r2
+ 263 0048 7B60     		str	r3, [r7, #4]
  239:../Dave/Generated/src/CLK002/CLK002.c ****         SCU_CLK->CLKCR = lCLKCR;
- 261              		.loc 1 239 0
- 262 004a 194B     		ldr	r3, .L22
- 263 004c 7A68     		ldr	r2, [r7, #4]
- 264 004e 1A60     		str	r2, [r3]
+ 264              		.loc 1 239 0
+ 265 004a 194B     		ldr	r3, .L22
+ 266 004c 7A68     		ldr	r2, [r7, #4]
+ 267 004e 1A60     		str	r2, [r3]
  240:../Dave/Generated/src/CLK002/CLK002.c **** 
  241:../Dave/Generated/src/CLK002/CLK002.c ****         /* Wait till frequency stable. */
  242:../Dave/Generated/src/CLK002/CLK002.c ****         WR_REG(SCU_CLK->CLKCR, SCU_CLK_CLKCR_CNTADJ_Msk, SCU_CLK_CLKCR_CNTADJ_Pos,CLK002_DELAYCNT);
- 265              		.loc 1 242 0
- 266 0050 174B     		ldr	r3, .L22
- 267 0052 174A     		ldr	r2, .L22
- 268 0054 1268     		ldr	r2, [r2]
- 269 0056 1849     		ldr	r1, .L22+8
- 270 0058 0A43     		orr	r2, r1
- 271 005a 1A60     		str	r2, [r3]
+ 268              		.loc 1 242 0
+ 269 0050 174B     		ldr	r3, .L22
+ 270 0052 174A     		ldr	r2, .L22
+ 271 0054 1268     		ldr	r2, [r2]
+ 272 0056 1849     		ldr	r1, .L22+8
+ 273 0058 0A43     		orr	r2, r1
+ 274 005a 1A60     		str	r2, [r3]
  243:../Dave/Generated/src/CLK002/CLK002.c ****         while (SCU_CLK->CLKCR&(SCU_CLK_CLKCR_VDDC2LOW_Msk))
- 272              		.loc 1 243 0
- 273 005c C046     		mov	r8, r8
- 274              	.L15:
- 275              		.loc 1 243 0 is_stmt 0 discriminator 1
- 276 005e 144B     		ldr	r3, .L22
- 277 0060 1A68     		ldr	r2, [r3]
- 278 0062 8023     		mov	r3, #128
- 279 0064 DB05     		lsl	r3, r3, #23
- 280 0066 1340     		and	r3, r2
- 281 0068 F9D1     		bne	.L15
- 282              		.loc 1 243 0
- 283 006a 1CE0     		b	.L20
- 284              	.L14:
+ 275              		.loc 1 243 0
+ 276 005c C046     		mov	r8, r8
+ 277              	.L15:
+ 278              		.loc 1 243 0 is_stmt 0 discriminator 1
+ 279 005e 144B     		ldr	r3, .L22
+ 280 0060 1A68     		ldr	r2, [r3]
+ 281 0062 8023     		mov	r3, #128
+ 282 0064 DB05     		lsl	r3, r3, #23
+ 283 0066 1340     		and	r3, r2
+ 284 0068 F9D1     		bne	.L15
+ 285              		.loc 1 243 0
+ 286 006a 1CE0     		b	.L20
+ 287              	.L14:
  244:../Dave/Generated/src/CLK002/CLK002.c ****         {
  245:../Dave/Generated/src/CLK002/CLK002.c ****             ;
  246:../Dave/Generated/src/CLK002/CLK002.c ****         }
@@ -526,80 +529,80 @@
  249:../Dave/Generated/src/CLK002/CLK002.c ****     {
  250:../Dave/Generated/src/CLK002/CLK002.c ****         /* Program TargetIDiv into IDIV bitfield of CLKCR. */
  251:../Dave/Generated/src/CLK002/CLK002.c ****         lCLKCR = SCU_CLK->CLKCR;
- 285              		.loc 1 251 0 is_stmt 1
- 286 006c 104B     		ldr	r3, .L22
- 287 006e 1B68     		ldr	r3, [r3]
- 288 0070 7B60     		str	r3, [r7, #4]
+ 288              		.loc 1 251 0 is_stmt 1
+ 289 006c 104B     		ldr	r3, .L22
+ 290 006e 1B68     		ldr	r3, [r3]
+ 291 0070 7B60     		str	r3, [r7, #4]
  252:../Dave/Generated/src/CLK002/CLK002.c ****         WR_REG(lCLKCR, SCU_CLK_CLKCR_IDIV_Msk, SCU_CLK_CLKCR_IDIV_Pos,TargetIdiv);
- 289              		.loc 1 252 0
- 290 0072 BB68     		ldr	r3, [r7, #8]
- 291 0074 1B02     		lsl	r3, r3, #8
- 292 0076 1B04     		lsl	r3, r3, #16
- 293 0078 1A0C     		lsr	r2, r3, #16
- 294 007a 7968     		ldr	r1, [r7, #4]
- 295 007c 0D4B     		ldr	r3, .L22+4
- 296 007e 0B40     		and	r3, r1
- 297 0080 1343     		orr	r3, r2
- 298 0082 7B60     		str	r3, [r7, #4]
+ 292              		.loc 1 252 0
+ 293 0072 BB68     		ldr	r3, [r7, #8]
+ 294 0074 1B02     		lsl	r3, r3, #8
+ 295 0076 1B04     		lsl	r3, r3, #16
+ 296 0078 1A0C     		lsr	r2, r3, #16
+ 297 007a 7968     		ldr	r1, [r7, #4]
+ 298 007c 0D4B     		ldr	r3, .L22+4
+ 299 007e 0B40     		and	r3, r1
+ 300 0080 1343     		orr	r3, r2
+ 301 0082 7B60     		str	r3, [r7, #4]
  253:../Dave/Generated/src/CLK002/CLK002.c ****         SCU_CLK->CLKCR = lCLKCR;
- 299              		.loc 1 253 0
- 300 0084 0A4B     		ldr	r3, .L22
- 301 0086 7A68     		ldr	r2, [r7, #4]
- 302 0088 1A60     		str	r2, [r3]
+ 302              		.loc 1 253 0
+ 303 0084 0A4B     		ldr	r3, .L22
+ 304 0086 7A68     		ldr	r2, [r7, #4]
+ 305 0088 1A60     		str	r2, [r3]
  254:../Dave/Generated/src/CLK002/CLK002.c ****         /* Wait till frequency stable. */
  255:../Dave/Generated/src/CLK002/CLK002.c ****         WR_REG(SCU_CLK->CLKCR, SCU_CLK_CLKCR_CNTADJ_Msk, SCU_CLK_CLKCR_CNTADJ_Pos,CLK002_DELAYCNT);
- 303              		.loc 1 255 0
- 304 008a 094B     		ldr	r3, .L22
- 305 008c 084A     		ldr	r2, .L22
- 306 008e 1268     		ldr	r2, [r2]
- 307 0090 0949     		ldr	r1, .L22+8
- 308 0092 0A43     		orr	r2, r1
- 309 0094 1A60     		str	r2, [r3]
+ 306              		.loc 1 255 0
+ 307 008a 094B     		ldr	r3, .L22
+ 308 008c 084A     		ldr	r2, .L22
+ 309 008e 1268     		ldr	r2, [r2]
+ 310 0090 0949     		ldr	r1, .L22+8
+ 311 0092 0A43     		orr	r2, r1
+ 312 0094 1A60     		str	r2, [r3]
  256:../Dave/Generated/src/CLK002/CLK002.c ****         while (SCU_CLK->CLKCR&(SCU_CLK_CLKCR_VDDC2LOW_Msk))
- 310              		.loc 1 256 0
- 311 0096 C046     		mov	r8, r8
- 312              	.L17:
- 313              		.loc 1 256 0 is_stmt 0 discriminator 1
- 314 0098 054B     		ldr	r3, .L22
- 315 009a 1A68     		ldr	r2, [r3]
- 316 009c 8023     		mov	r3, #128
- 317 009e DB05     		lsl	r3, r3, #23
- 318 00a0 1340     		and	r3, r2
- 319 00a2 F9D1     		bne	.L17
+ 313              		.loc 1 256 0
+ 314 0096 C046     		mov	r8, r8
+ 315              	.L17:
+ 316              		.loc 1 256 0 is_stmt 0 discriminator 1
+ 317 0098 054B     		ldr	r3, .L22
+ 318 009a 1A68     		ldr	r2, [r3]
+ 319 009c 8023     		mov	r3, #128
+ 320 009e DB05     		lsl	r3, r3, #23
+ 321 00a0 1340     		and	r3, r2
+ 322 00a2 F9D1     		bne	.L17
  257:../Dave/Generated/src/CLK002/CLK002.c ****         {
  258:../Dave/Generated/src/CLK002/CLK002.c ****             ;
  259:../Dave/Generated/src/CLK002/CLK002.c ****         }
  260:../Dave/Generated/src/CLK002/CLK002.c ****         break;
- 320              		.loc 1 260 0 is_stmt 1
- 321 00a4 00E0     		b	.L21
- 322              	.L20:
+ 323              		.loc 1 260 0 is_stmt 1
+ 324 00a4 00E0     		b	.L21
+ 325              	.L20:
  261:../Dave/Generated/src/CLK002/CLK002.c ****     }
  262:../Dave/Generated/src/CLK002/CLK002.c **** 
  263:../Dave/Generated/src/CLK002/CLK002.c ****   }
- 323              		.loc 1 263 0
- 324 00a6 B7E7     		b	.L19
- 325              	.L21:
+ 326              		.loc 1 263 0
+ 327 00a6 B7E7     		b	.L19
+ 328              	.L21:
  264:../Dave/Generated/src/CLK002/CLK002.c **** 
  265:../Dave/Generated/src/CLK002/CLK002.c **** }
- 326              		.loc 1 265 0
- 327 00a8 BD46     		mov	sp, r7
- 328 00aa 04B0     		add	sp, sp, #16
- 329              		@ sp needed for prologue
- 330 00ac 80BD     		pop	{r7, pc}
- 331              	.L23:
- 332 00ae C046     		.align	2
- 333              	.L22:
- 334 00b0 00030140 		.word	1073808128
- 335 00b4 FF00FFFF 		.word	-65281
- 336 00b8 0000F03F 		.word	1072693248
- 337              		.cfi_endproc
- 338              	.LFE41:
- 340              		.section	.text.CLK002_lFrequencyDownScaling,"ax",%progbits
- 341              		.align	2
- 342              		.code	16
- 343              		.thumb_func
- 345              	CLK002_lFrequencyDownScaling:
- 346              	.LFB42:
+ 329              		.loc 1 265 0
+ 330 00a8 BD46     		mov	sp, r7
+ 331 00aa 04B0     		add	sp, sp, #16
+ 332              		@ sp needed for prologue
+ 333 00ac 80BD     		pop	{r7, pc}
+ 334              	.L23:
+ 335 00ae C046     		.align	2
+ 336              	.L22:
+ 337 00b0 00030140 		.word	1073808128
+ 338 00b4 FF00FFFF 		.word	-65281
+ 339 00b8 0000F03F 		.word	1072693248
+ 340              		.cfi_endproc
+ 341              	.LFE41:
+ 343              		.section	.text.CLK002_lFrequencyDownScaling,"ax",%progbits
+ 344              		.align	2
+ 345              		.code	16
+ 346              		.thumb_func
+ 348              	CLK002_lFrequencyDownScaling:
+ 349              	.LFB42:
  266:../Dave/Generated/src/CLK002/CLK002.c **** 
  267:../Dave/Generated/src/CLK002/CLK002.c **** /**
  268:../Dave/Generated/src/CLK002/CLK002.c ****   * @brief  Function to provide frequency up scaling.
@@ -609,96 +612,96 @@
  272:../Dave/Generated/src/CLK002/CLK002.c ****   */
  273:../Dave/Generated/src/CLK002/CLK002.c **** static void     CLK002_lFrequencyDownScaling()
  274:../Dave/Generated/src/CLK002/CLK002.c **** {
- 347              		.loc 1 274 0
- 348              		.cfi_startproc
- 349 0000 80B5     		push	{r7, lr}
- 350              	.LCFI10:
- 351              		.cfi_def_cfa_offset 8
- 352              		.cfi_offset 7, -8
- 353              		.cfi_offset 14, -4
- 354 0002 84B0     		sub	sp, sp, #16
- 355              	.LCFI11:
- 356              		.cfi_def_cfa_offset 24
- 357 0004 00AF     		add	r7, sp, #0
- 358              	.LCFI12:
- 359              		.cfi_def_cfa_register 7
+ 350              		.loc 1 274 0
+ 351              		.cfi_startproc
+ 352 0000 80B5     		push	{r7, lr}
+ 353              	.LCFI10:
+ 354              		.cfi_def_cfa_offset 8
+ 355              		.cfi_offset 7, -8
+ 356              		.cfi_offset 14, -4
+ 357 0002 84B0     		sub	sp, sp, #16
+ 358              	.LCFI11:
+ 359              		.cfi_def_cfa_offset 24
+ 360 0004 00AF     		add	r7, sp, #0
+ 361              	.LCFI12:
+ 362              		.cfi_def_cfa_register 7
  275:../Dave/Generated/src/CLK002/CLK002.c ****     uint32_t CurrIdiv;
  276:../Dave/Generated/src/CLK002/CLK002.c ****     uint32_t TargetIdiv;
  277:../Dave/Generated/src/CLK002/CLK002.c ****     uint32_t lCLKCR;
  278:../Dave/Generated/src/CLK002/CLK002.c ****     CurrIdiv = (((SCU_CLK->CLKCR)&SCU_CLK_CLKCR_IDIV_Msk)>>SCU_CLK_CLKCR_IDIV_Pos);
- 360              		.loc 1 278 0
- 361 0006 274B     		ldr	r3, .L33
- 362 0008 1A68     		ldr	r2, [r3]
- 363 000a FF23     		mov	r3, #255
- 364 000c 1B02     		lsl	r3, r3, #8
- 365 000e 1340     		and	r3, r2
- 366 0010 1B0A     		lsr	r3, r3, #8
- 367 0012 FB60     		str	r3, [r7, #12]
+ 363              		.loc 1 278 0
+ 364 0006 274B     		ldr	r3, .L33
+ 365 0008 1A68     		ldr	r2, [r3]
+ 366 000a FF23     		mov	r3, #255
+ 367 000c 1B02     		lsl	r3, r3, #8
+ 368 000e 1340     		and	r3, r2
+ 369 0010 1B0A     		lsr	r3, r3, #8
+ 370 0012 FB60     		str	r3, [r7, #12]
  279:../Dave/Generated/src/CLK002/CLK002.c ****     TargetIdiv = CLK002_CLKCR_IDIV;
- 368              		.loc 1 279 0
- 369 0014 0423     		mov	r3, #4
- 370 0016 BB60     		str	r3, [r7, #8]
- 371              	.L30:
+ 371              		.loc 1 279 0
+ 372 0014 0423     		mov	r3, #4
+ 373 0016 BB60     		str	r3, [r7, #8]
+ 374              	.L30:
  280:../Dave/Generated/src/CLK002/CLK002.c ****     while(1)
  281:../Dave/Generated/src/CLK002/CLK002.c ****     {
  282:../Dave/Generated/src/CLK002/CLK002.c ****         if((CurrIdiv * 4UL) < TargetIdiv )
- 372              		.loc 1 282 0
- 373 0018 FB68     		ldr	r3, [r7, #12]
- 374 001a 9A00     		lsl	r2, r3, #2
- 375 001c BB68     		ldr	r3, [r7, #8]
- 376 001e 9A42     		cmp	r2, r3
- 377 0020 1FD2     		bcs	.L25
+ 375              		.loc 1 282 0
+ 376 0018 FB68     		ldr	r3, [r7, #12]
+ 377 001a 9A00     		lsl	r2, r3, #2
+ 378 001c BB68     		ldr	r3, [r7, #8]
+ 379 001e 9A42     		cmp	r2, r3
+ 380 0020 1FD2     		bcs	.L25
  283:../Dave/Generated/src/CLK002/CLK002.c ****         {
  284:../Dave/Generated/src/CLK002/CLK002.c ****             CurrIdiv  = CurrIdiv << 2;   /* Multiply by 4. */
- 378              		.loc 1 284 0
- 379 0022 FB68     		ldr	r3, [r7, #12]
- 380 0024 9B00     		lsl	r3, r3, #2
- 381 0026 FB60     		str	r3, [r7, #12]
+ 381              		.loc 1 284 0
+ 382 0022 FB68     		ldr	r3, [r7, #12]
+ 383 0024 9B00     		lsl	r3, r3, #2
+ 384 0026 FB60     		str	r3, [r7, #12]
  285:../Dave/Generated/src/CLK002/CLK002.c ****             /* Program interim value of IDIV */
  286:../Dave/Generated/src/CLK002/CLK002.c ****             lCLKCR = SCU_CLK->CLKCR;
- 382              		.loc 1 286 0
- 383 0028 1E4B     		ldr	r3, .L33
- 384 002a 1B68     		ldr	r3, [r3]
- 385 002c 7B60     		str	r3, [r7, #4]
+ 385              		.loc 1 286 0
+ 386 0028 1E4B     		ldr	r3, .L33
+ 387 002a 1B68     		ldr	r3, [r3]
+ 388 002c 7B60     		str	r3, [r7, #4]
  287:../Dave/Generated/src/CLK002/CLK002.c ****             WR_REG(lCLKCR, SCU_CLK_CLKCR_IDIV_Msk, SCU_CLK_CLKCR_IDIV_Pos,CurrIdiv);
- 386              		.loc 1 287 0
- 387 002e FB68     		ldr	r3, [r7, #12]
- 388 0030 1B02     		lsl	r3, r3, #8
- 389 0032 1B04     		lsl	r3, r3, #16
- 390 0034 1A0C     		lsr	r2, r3, #16
- 391 0036 7968     		ldr	r1, [r7, #4]
- 392 0038 1B4B     		ldr	r3, .L33+4
- 393 003a 0B40     		and	r3, r1
- 394 003c 1343     		orr	r3, r2
- 395 003e 7B60     		str	r3, [r7, #4]
+ 389              		.loc 1 287 0
+ 390 002e FB68     		ldr	r3, [r7, #12]
+ 391 0030 1B02     		lsl	r3, r3, #8
+ 392 0032 1B04     		lsl	r3, r3, #16
+ 393 0034 1A0C     		lsr	r2, r3, #16
+ 394 0036 7968     		ldr	r1, [r7, #4]
+ 395 0038 1B4B     		ldr	r3, .L33+4
+ 396 003a 0B40     		and	r3, r1
+ 397 003c 1343     		orr	r3, r2
+ 398 003e 7B60     		str	r3, [r7, #4]
  288:../Dave/Generated/src/CLK002/CLK002.c ****             SCU_CLK->CLKCR = lCLKCR;
- 396              		.loc 1 288 0
- 397 0040 184B     		ldr	r3, .L33
- 398 0042 7A68     		ldr	r2, [r7, #4]
- 399 0044 1A60     		str	r2, [r3]
+ 399              		.loc 1 288 0
+ 400 0040 184B     		ldr	r3, .L33
+ 401 0042 7A68     		ldr	r2, [r7, #4]
+ 402 0044 1A60     		str	r2, [r3]
  289:../Dave/Generated/src/CLK002/CLK002.c ****             /* Wait till frequency stable. */
  290:../Dave/Generated/src/CLK002/CLK002.c ****             WR_REG(SCU_CLK->CLKCR, SCU_CLK_CLKCR_CNTADJ_Msk, SCU_CLK_CLKCR_CNTADJ_Pos,CLK002_DELAYC
- 400              		.loc 1 290 0
- 401 0046 174B     		ldr	r3, .L33
- 402 0048 164A     		ldr	r2, .L33
- 403 004a 1268     		ldr	r2, [r2]
- 404 004c 1749     		ldr	r1, .L33+8
- 405 004e 0A43     		orr	r2, r1
- 406 0050 1A60     		str	r2, [r3]
+ 403              		.loc 1 290 0
+ 404 0046 174B     		ldr	r3, .L33
+ 405 0048 164A     		ldr	r2, .L33
+ 406 004a 1268     		ldr	r2, [r2]
+ 407 004c 1749     		ldr	r1, .L33+8
+ 408 004e 0A43     		orr	r2, r1
+ 409 0050 1A60     		str	r2, [r3]
  291:../Dave/Generated/src/CLK002/CLK002.c ****             while (SCU_CLK->CLKCR&(SCU_CLK_CLKCR_VDDC2LOW_Msk))
- 407              		.loc 1 291 0
- 408 0052 C046     		mov	r8, r8
- 409              	.L26:
- 410              		.loc 1 291 0 is_stmt 0 discriminator 1
- 411 0054 134B     		ldr	r3, .L33
- 412 0056 1A68     		ldr	r2, [r3]
- 413 0058 8023     		mov	r3, #128
- 414 005a DB05     		lsl	r3, r3, #23
- 415 005c 1340     		and	r3, r2
- 416 005e F9D1     		bne	.L26
- 417              		.loc 1 291 0
- 418 0060 1CE0     		b	.L31
- 419              	.L25:
+ 410              		.loc 1 291 0
+ 411 0052 C046     		mov	r8, r8
+ 412              	.L26:
+ 413              		.loc 1 291 0 is_stmt 0 discriminator 1
+ 414 0054 134B     		ldr	r3, .L33
+ 415 0056 1A68     		ldr	r2, [r3]
+ 416 0058 8023     		mov	r3, #128
+ 417 005a DB05     		lsl	r3, r3, #23
+ 418 005c 1340     		and	r3, r2
+ 419 005e F9D1     		bne	.L26
+ 420              		.loc 1 291 0
+ 421 0060 1CE0     		b	.L31
+ 422              	.L25:
  292:../Dave/Generated/src/CLK002/CLK002.c ****             {
  293:../Dave/Generated/src/CLK002/CLK002.c ****                 ;
  294:../Dave/Generated/src/CLK002/CLK002.c ****             }
@@ -707,94 +710,94 @@
  297:../Dave/Generated/src/CLK002/CLK002.c ****         {
  298:../Dave/Generated/src/CLK002/CLK002.c ****             /* Program TargetIDiv into IDIV bitfield of CLKCR */
  299:../Dave/Generated/src/CLK002/CLK002.c ****             lCLKCR = SCU_CLK->CLKCR;
- 420              		.loc 1 299 0 is_stmt 1
- 421 0062 104B     		ldr	r3, .L33
- 422 0064 1B68     		ldr	r3, [r3]
- 423 0066 7B60     		str	r3, [r7, #4]
+ 423              		.loc 1 299 0 is_stmt 1
+ 424 0062 104B     		ldr	r3, .L33
+ 425 0064 1B68     		ldr	r3, [r3]
+ 426 0066 7B60     		str	r3, [r7, #4]
  300:../Dave/Generated/src/CLK002/CLK002.c ****             WR_REG(lCLKCR, SCU_CLK_CLKCR_IDIV_Msk, SCU_CLK_CLKCR_IDIV_Pos,TargetIdiv);
- 424              		.loc 1 300 0
- 425 0068 BB68     		ldr	r3, [r7, #8]
- 426 006a 1B02     		lsl	r3, r3, #8
- 427 006c 1B04     		lsl	r3, r3, #16
- 428 006e 1A0C     		lsr	r2, r3, #16
- 429 0070 7968     		ldr	r1, [r7, #4]
- 430 0072 0D4B     		ldr	r3, .L33+4
- 431 0074 0B40     		and	r3, r1
- 432 0076 1343     		orr	r3, r2
- 433 0078 7B60     		str	r3, [r7, #4]
+ 427              		.loc 1 300 0
+ 428 0068 BB68     		ldr	r3, [r7, #8]
+ 429 006a 1B02     		lsl	r3, r3, #8
+ 430 006c 1B04     		lsl	r3, r3, #16
+ 431 006e 1A0C     		lsr	r2, r3, #16
+ 432 0070 7968     		ldr	r1, [r7, #4]
+ 433 0072 0D4B     		ldr	r3, .L33+4
+ 434 0074 0B40     		and	r3, r1
+ 435 0076 1343     		orr	r3, r2
+ 436 0078 7B60     		str	r3, [r7, #4]
  301:../Dave/Generated/src/CLK002/CLK002.c ****             SCU_CLK->CLKCR = lCLKCR;
- 434              		.loc 1 301 0
- 435 007a 0A4B     		ldr	r3, .L33
- 436 007c 7A68     		ldr	r2, [r7, #4]
- 437 007e 1A60     		str	r2, [r3]
+ 437              		.loc 1 301 0
+ 438 007a 0A4B     		ldr	r3, .L33
+ 439 007c 7A68     		ldr	r2, [r7, #4]
+ 440 007e 1A60     		str	r2, [r3]
  302:../Dave/Generated/src/CLK002/CLK002.c ****             /* Wait till frequency stable. */
  303:../Dave/Generated/src/CLK002/CLK002.c ****            
  304:../Dave/Generated/src/CLK002/CLK002.c ****             WR_REG(SCU_CLK->CLKCR, SCU_CLK_CLKCR_CNTADJ_Msk, SCU_CLK_CLKCR_CNTADJ_Pos,CLK002_DELAYC
- 438              		.loc 1 304 0
- 439 0080 084B     		ldr	r3, .L33
- 440 0082 084A     		ldr	r2, .L33
- 441 0084 1268     		ldr	r2, [r2]
- 442 0086 0949     		ldr	r1, .L33+8
- 443 0088 0A43     		orr	r2, r1
- 444 008a 1A60     		str	r2, [r3]
+ 441              		.loc 1 304 0
+ 442 0080 084B     		ldr	r3, .L33
+ 443 0082 084A     		ldr	r2, .L33
+ 444 0084 1268     		ldr	r2, [r2]
+ 445 0086 0949     		ldr	r1, .L33+8
+ 446 0088 0A43     		orr	r2, r1
+ 447 008a 1A60     		str	r2, [r3]
  305:../Dave/Generated/src/CLK002/CLK002.c ****             while (SCU_CLK->CLKCR&(SCU_CLK_CLKCR_VDDC2LOW_Msk))
- 445              		.loc 1 305 0
- 446 008c C046     		mov	r8, r8
- 447              	.L28:
- 448              		.loc 1 305 0 is_stmt 0 discriminator 1
- 449 008e 054B     		ldr	r3, .L33
- 450 0090 1A68     		ldr	r2, [r3]
- 451 0092 8023     		mov	r3, #128
- 452 0094 DB05     		lsl	r3, r3, #23
- 453 0096 1340     		and	r3, r2
- 454 0098 F9D1     		bne	.L28
+ 448              		.loc 1 305 0
+ 449 008c C046     		mov	r8, r8
+ 450              	.L28:
+ 451              		.loc 1 305 0 is_stmt 0 discriminator 1
+ 452 008e 054B     		ldr	r3, .L33
+ 453 0090 1A68     		ldr	r2, [r3]
+ 454 0092 8023     		mov	r3, #128
+ 455 0094 DB05     		lsl	r3, r3, #23
+ 456 0096 1340     		and	r3, r2
+ 457 0098 F9D1     		bne	.L28
  306:../Dave/Generated/src/CLK002/CLK002.c ****             {
  307:../Dave/Generated/src/CLK002/CLK002.c ****                 ;
  308:../Dave/Generated/src/CLK002/CLK002.c ****             }
  309:../Dave/Generated/src/CLK002/CLK002.c ****              break;
- 455              		.loc 1 309 0 is_stmt 1
- 456 009a 00E0     		b	.L32
- 457              	.L31:
+ 458              		.loc 1 309 0 is_stmt 1
+ 459 009a 00E0     		b	.L32
+ 460              	.L31:
  310:../Dave/Generated/src/CLK002/CLK002.c ****         }
  311:../Dave/Generated/src/CLK002/CLK002.c **** 
  312:../Dave/Generated/src/CLK002/CLK002.c **** 	  }
- 458              		.loc 1 312 0
- 459 009c BCE7     		b	.L30
- 460              	.L32:
+ 461              		.loc 1 312 0
+ 462 009c BCE7     		b	.L30
+ 463              	.L32:
  313:../Dave/Generated/src/CLK002/CLK002.c **** }
- 461              		.loc 1 313 0
- 462 009e BD46     		mov	sp, r7
- 463 00a0 04B0     		add	sp, sp, #16
- 464              		@ sp needed for prologue
- 465 00a2 80BD     		pop	{r7, pc}
- 466              	.L34:
- 467              		.align	2
- 468              	.L33:
- 469 00a4 00030140 		.word	1073808128
- 470 00a8 FF00FFFF 		.word	-65281
- 471 00ac 0000F03F 		.word	1072693248
- 472              		.cfi_endproc
- 473              	.LFE42:
- 475              		.text
- 476              	.Letext0:
- 477              		.file 2 "C:\\DAVE-3.1.10\\eclipse\\/../CMSIS/Infineon/XMC1100_series/Include/XMC1100.h"
- 478              		.file 3 "c:\\dave-3.1.10\\arm-gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/i
+ 464              		.loc 1 313 0
+ 465 009e BD46     		mov	sp, r7
+ 466 00a0 04B0     		add	sp, sp, #16
+ 467              		@ sp needed for prologue
+ 468 00a2 80BD     		pop	{r7, pc}
+ 469              	.L34:
+ 470              		.align	2
+ 471              	.L33:
+ 472 00a4 00030140 		.word	1073808128
+ 473 00a8 FF00FFFF 		.word	-65281
+ 474 00ac 0000F03F 		.word	1072693248
+ 475              		.cfi_endproc
+ 476              	.LFE42:
+ 478              		.text
+ 479              	.Letext0:
+ 480              		.file 2 "C:\\DAVE-3.1.10\\eclipse\\/../CMSIS/Infineon/XMC1100_series/Include/XMC1100.h"
+ 481              		.file 3 "c:\\dave-3.1.10\\arm-gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/i
 DEFINED SYMBOLS
                             *ABS*:00000000 CLK002.c
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:18     .text.CLK002_Init:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:23     .text.CLK002_Init:00000000 CLK002_Init
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:107    .text.CLK002_lDivUpdate:00000000 CLK002_lDivUpdate
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:69     .text.CLK002_Init:00000030 $d
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:75     .text.AllowClkInitByStartup:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:80     .text.AllowClkInitByStartup:00000000 AllowClkInitByStartup
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:103    .text.CLK002_lDivUpdate:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:345    .text.CLK002_lFrequencyDownScaling:00000000 CLK002_lFrequencyDownScaling
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:204    .text.CLK002_lFrequencyUpScaling:00000000 CLK002_lFrequencyUpScaling
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:194    .text.CLK002_lDivUpdate:00000070 $d
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:200    .text.CLK002_lFrequencyUpScaling:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:334    .text.CLK002_lFrequencyUpScaling:000000b0 $d
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:341    .text.CLK002_lFrequencyDownScaling:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:469    .text.CLK002_lFrequencyDownScaling:000000a4 $d
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:18     .text.CLK002_Init:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:23     .text.CLK002_Init:00000000 CLK002_Init
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:110    .text.CLK002_lDivUpdate:00000000 CLK002_lDivUpdate
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:72     .text.CLK002_Init:00000038 $d
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:78     .text.AllowClkInitByStartup:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:83     .text.AllowClkInitByStartup:00000000 AllowClkInitByStartup
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:106    .text.CLK002_lDivUpdate:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:348    .text.CLK002_lFrequencyDownScaling:00000000 CLK002_lFrequencyDownScaling
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:207    .text.CLK002_lFrequencyUpScaling:00000000 CLK002_lFrequencyUpScaling
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:197    .text.CLK002_lDivUpdate:00000070 $d
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:203    .text.CLK002_lFrequencyUpScaling:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:337    .text.CLK002_lFrequencyUpScaling:000000b0 $d
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:344    .text.CLK002_lFrequencyDownScaling:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccNIYmlJ.s:472    .text.CLK002_lFrequencyDownScaling:000000a4 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
                            .group:00000000 wm4.XMC1100.h.45.7a7cd799d7738130fcda8b83b0aa37d4
@@ -813,11 +816,11 @@ C:\Users\blinch\AppData\Local\Temp\ccvr2WLl.s:469    .text.CLK002_lFrequencyDown
                            .group:00000000 wm4.MULTIPLEXER.h.46.383e3edbb9cbf6e538f7c1532ef623c1
                            .group:00000000 wm4.uc_id.h.35.eaf9b374d895319eacbb56387e04af18
                            .group:00000000 wm4.Usic.h.90.22743468abc46f16747d12430b219aaf
-                           .group:00000000 wm4.UART001_Conf.h.53.aebc8f191a793f9f63edb41ad937b6a4
+                           .group:00000000 wm4.UART001_Conf.h.53.2b978016b2a1b3f7530722d205f97ea7
                            .group:00000000 wm4.UART001.h.109.3e835815a7a59791d8bd39655f4d4cc9
                            .group:00000000 wm4.IO004.h.53.442ea5eb47ad9eedc675253aa35f3107
                            .group:00000000 wm4.SYSTM001.h.64.af8873ad2b760a8c44fafec70d7e8a7e
-                           .group:00000000 wm4.NVIC002_Conf.h.63.4b0a4fc0e0b94704d9839f72a73ca746
+                           .group:00000000 wm4.NVIC002_Conf.h.63.641a9396c52c65009d6d8e781079fdb4
 
 UNDEFINED SYMBOLS
 SystemCoreClockUpdate

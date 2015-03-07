@@ -223,12 +223,12 @@
  117              		.file 2 "c:\\dave-3.1.10\\arm-gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/i
 DEFINED SYMBOLS
                             *ABS*:00000000 light_ws2812_cortex.c
-C:\Users\blinch\AppData\Local\Temp\ccCyUGvc.s:18     .text.ws2812_sendarray:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccCyUGvc.s:23     .text.ws2812_sendarray:00000000 ws2812_sendarray
-C:\Users\blinch\AppData\Local\Temp\ccCyUGvc.s:76     .text.ws2812_sendarray:0000003a ilop45
-C:\Users\blinch\AppData\Local\Temp\ccCyUGvc.s:82     .text.ws2812_sendarray:00000044 one45
-C:\Users\blinch\AppData\Local\Temp\ccCyUGvc.s:87     .text.ws2812_sendarray:0000004c end45
-C:\Users\blinch\AppData\Local\Temp\ccCyUGvc.s:111    .text.ws2812_sendarray:00000068 $d
+C:\Users\blinch\AppData\Local\Temp\ccRjAKyx.s:18     .text.ws2812_sendarray:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccRjAKyx.s:23     .text.ws2812_sendarray:00000000 ws2812_sendarray
+C:\Users\blinch\AppData\Local\Temp\ccRjAKyx.s:76     .text.ws2812_sendarray:0000003a ilop45
+C:\Users\blinch\AppData\Local\Temp\ccRjAKyx.s:82     .text.ws2812_sendarray:00000044 one45
+C:\Users\blinch\AppData\Local\Temp\ccRjAKyx.s:87     .text.ws2812_sendarray:0000004c end45
+C:\Users\blinch\AppData\Local\Temp\ccRjAKyx.s:111    .text.ws2812_sendarray:00000068 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
                            .group:00000000 wm4.newlib.h.8.a9901dc52d1357e3e94003403d43f8b5
@@ -242,6 +242,6 @@ C:\Users\blinch\AppData\Local\Temp\ccCyUGvc.s:111    .text.ws2812_sendarray:0000
                            .group:00000000 wm4.core_cm0.h.135.ca70469f87e143609670bb393bfa6518
                            .group:00000000 wm4.XMC1000_RomFunctionTable.h.31.6d9a94465618f31b040dc9cea9a47ad7
                            .group:00000000 wm4.XMC1100.h.114.be3711f71ee045884346be801053f4c0
-                           .group:00000000 wm4.light_ws2812_cortex.h.33.6e29ad802bbc1ae239ebaf02524857a4
+                           .group:00000000 wm4.light_ws2812_cortex.h.26.9b1a3dd4cd888abe1fdee7c6e368ec47
 
 NO UNDEFINED SYMBOLS

@@ -18,14 +18,14 @@
   18              		.section	.rodata
   19              		.align	2
   22              	NVIC002_Handle0:
-  23 0000 1A       		.byte	26
-  24 0001 03       		.byte	3
+  23 0000 09       		.byte	9
+  24 0001 00       		.byte	0
   25 0002 00       		.byte	0
   26 0003 01       		.byte	1
   27              		.global	NVIC002_Handle1
   28              		.align	2
   31              	NVIC002_Handle1:
-  32 0004 19       		.byte	25
+  32 0004 0A       		.byte	10
   33 0005 03       		.byte	3
   34 0006 00       		.byte	0
   35 0007 01       		.byte	1
@@ -42,11 +42,11 @@
   48              		.file 3 "../Dave/Generated/src/NVIC002/NVIC002_Conf.c"
 DEFINED SYMBOLS
                             *ABS*:00000000 NVIC002_Conf.c
-C:\Users\blinch\AppData\Local\Temp\ccYTWRXw.s:22     .rodata:00000000 NVIC002_Handle0
-C:\Users\blinch\AppData\Local\Temp\ccYTWRXw.s:19     .rodata:00000000 $d
-C:\Users\blinch\AppData\Local\Temp\ccYTWRXw.s:31     .rodata:00000004 NVIC002_Handle1
-C:\Users\blinch\AppData\Local\Temp\ccYTWRXw.s:41     .data:00000000 NVIC002_HandleArray
-C:\Users\blinch\AppData\Local\Temp\ccYTWRXw.s:38     .data:00000000 $d
+C:\Users\blinch\AppData\Local\Temp\cc0yLKiU.s:22     .rodata:00000000 NVIC002_Handle0
+C:\Users\blinch\AppData\Local\Temp\cc0yLKiU.s:19     .rodata:00000000 $d
+C:\Users\blinch\AppData\Local\Temp\cc0yLKiU.s:31     .rodata:00000004 NVIC002_Handle1
+C:\Users\blinch\AppData\Local\Temp\cc0yLKiU.s:41     .data:00000000 NVIC002_HandleArray
+C:\Users\blinch\AppData\Local\Temp\cc0yLKiU.s:38     .data:00000000 $d
                            .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
                            .group:00000000 wm4.uc_id.h.35.eaf9b374d895319eacbb56387e04af18
                            .group:00000000 wm4.XMC1100.h.45.7a7cd799d7738130fcda8b83b0aa37d4
@@ -60,6 +60,6 @@ C:\Users\blinch\AppData\Local\Temp\ccYTWRXw.s:38     .data:00000000 $d
                            .group:00000000 wm4.core_cm0.h.135.ca70469f87e143609670bb393bfa6518
                            .group:00000000 wm4.XMC1000_RomFunctionTable.h.31.6d9a94465618f31b040dc9cea9a47ad7
                            .group:00000000 wm4.XMC1100.h.114.be3711f71ee045884346be801053f4c0
-                           .group:00000000 wm4.NVIC002_Conf.h.63.4b0a4fc0e0b94704d9839f72a73ca746
+                           .group:00000000 wm4.NVIC002_Conf.h.63.641a9396c52c65009d6d8e781079fdb4
 
 NO UNDEFINED SYMBOLS

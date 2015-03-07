@@ -13,18 +13,18 @@
   <provided xsi:type="ResourceModel:EnumerationParameter" name="Peripheral Clock Selection - PCLK" evalFunction="&#xD;&#xA;            function ForwardMapping()&#xD;&#xA;            {&#xD;&#xA;              var Res = SCM.getResource(&quot;clk_uri/clkcr/pclksel&quot;); &#xD;&#xA;              var value = SCM.getIntValue(currentResource);&#xD;&#xA;              SCM.setIntValue(Res,value);&#xD;&#xA;            }&#xD;&#xA;            function BackwardMapping()&#xD;&#xA;            {&#xD;&#xA;              var Res = SCM.getResource(&quot;clk_uri/clkcr/pclksel&quot;); &#xD;&#xA;              var value = SCM.getIntValue(Res); &#xD;&#xA;              SCM.setIntValue(currentResource,value);&#xD;&#xA;            }" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk002_erwpclkselection" downWardmappedList="//@consumed.29">
     <defaultValue xsi:type="ResourceModel:IntegerValue" value="0"/>
     <localValue xsi:type="ResourceModel:StringValue" value="0"/>
-    <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+    <globalValue xsi:type="ResourceModel:IntegerValue" value="1"/>
     <toolTipHelpDescription>CCU8/POSIF0/CCU40/MATH/BCCU0 Uses PCLK</toolTipHelpDescription>
     <item name="PCLK = MCLK" evalFunction="      &#xD;&#xA;            function ForwardMapping()&#xD;&#xA;            {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var value3 = SCM.getIntValue(currentResource);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;clk_uri/clkcr/pclksel&quot;);&#xD;&#xA;&#xD;&#xA;              &#x9;if (value3 == 1 ) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;                &#x9;SCM.setIntValue(Res4,0);&#xD;&#xA;      &#x9;        &#x9;var tempRespclk = SCM.getResource(&quot;PCLKselBit&quot;);&#xD;&#xA;        &#x9;    &#x9;SCM.setDoubleValue(tempRespclk,0);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;InputFreq&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var InputFreq1 = SCM.getDoubleValue(Res4);&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var userfreq = &#x9;2*InputFreq1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var freq_fact=64000/userfreq;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var i_div=Math.floor(freq_fact);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (i_div==256)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;i_div=i_div-1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;            var Res3 = SCM.getResource(&quot;clk_uri/clkcr/idiv&quot;); &#xD;&#xA;&#x9;&#x9;            SCM.setIntValue(Res3,i_div);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var temp_f_div=(freq_fact-i_div)*256;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (i_div==255)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;temp_f_div=0;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var f_div;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var tempfdivfact;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (temp_f_div==0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;f_div=0;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tempfdivfact = 0;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;f_div=Math.floor(temp_f_div);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tempfdivfact = f_div/256;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;            var Res4 = SCM.getResource(&quot;clk_uri/clkcr/fdiv&quot;); &#xD;&#xA;&#x9;&#x9;            SCM.setIntValue(Res4,f_div);&#xD;&#xA;&#x9;&#x9; &#xD;&#xA;&#x9;&#x9;           &#x9;var tempidivfact = i_div;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var DinominatorFact = tempfdivfact+tempidivfact;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var ActDinomiFact = DinominatorFact*2;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var MCLK = 64000/ActDinomiFact;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;MCLK = MCLK/1000;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var tempRes = SCM.getResource(&quot;ActualMCLK&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SCM.setDoubleValue(tempRes,MCLK);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var tempRes = SCM.getResource(&quot;ActualPCLK&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SCM.setDoubleValue(tempRes,MCLK);&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;          &#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else if (value3 == 0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;            &#x9;SCM.setIntValue(Res4,1);&#xD;&#xA;&#x9;  &#x9;        &#x9;var tempRespclk = SCM.getResource(&quot;PCLKselBit&quot;);&#xD;&#xA;&#x9;    &#x9;    &#x9;SCM.setDoubleValue(tempRespclk,1);&#xD;&#xA;&#x9;    &#x9;   &#x9;}              &#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;            &#xD;&#xA;&#x9;&#x9;&#x9;function BackwardMapping()&#xD;&#xA;&#x9;        {&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;clk_uri/clkcr/pclksel&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var value3 = SCM.getIntValue(Res4);&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;          &#x9;if (value3 == 1 ) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;            &#x9;SCM.setIntValue(currentResource,0);&#xD;&#xA;&#x9;          &#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else if (value3 == 0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;            &#x9;SCM.setIntValue(currentResource,1);&#xD;&#xA;&#x9;    &#x9;   &#x9;}              &#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;            " URI="http://www.infineon.com/1.0.8/app/clk002/0/clk002_erwpclkselection/0" downWardmappedList="//@consumed.29 //@consumed.19 //@consumed.30 //@consumed.31 //@consumed.16 //@consumed.15" maxValue="1" minValue="0">
       <defaultValue xsi:type="ResourceModel:IntegerValue" value="1"/>
-      <localValue xsi:type="ResourceModel:StringValue" value="1"/>
-      <globalValue xsi:type="ResourceModel:IntegerValue" value="1"/>
+      <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
       <toolTipHelpDescription>PCLK is equal to MCLK</toolTipHelpDescription>
     </item>
-    <item name="PCLK = 2*MCLK" evalFunction="      &#xD;&#xA;            function ForwardMapping()&#xD;&#xA;            {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var value3 = SCM.getIntValue(currentResource);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;clk_uri/clkcr/pclksel&quot;);&#xD;&#xA;&#xD;&#xA;              &#x9;if (value3 == 1 ) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;                &#x9;SCM.setIntValue(Res4,1);&#xD;&#xA;      &#x9;        &#x9;var tempRespclk = SCM.getResource(&quot;PCLKselBit&quot;);&#xD;&#xA;        &#x9;    &#x9;SCM.setDoubleValue(tempRespclk,1);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;InputFreq&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var InputFreq1 = SCM.getDoubleValue(Res4);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var userfreq = &#x9;2*InputFreq1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var freq_fact=64000/userfreq;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var i_div=Math.floor(freq_fact);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (i_div==256)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;i_div=i_div-1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;            var Res3 = SCM.getResource(&quot;clk_uri/clkcr/idiv&quot;); &#xD;&#xA;&#x9;&#x9;            SCM.setIntValue(Res3,i_div);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var temp_f_div=(freq_fact-i_div)*256;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (i_div==255)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;temp_f_div=0;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var f_div;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var tempfdivfact;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (temp_f_div==0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;f_div=0;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tempfdivfact = 0;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;f_div=Math.floor(temp_f_div);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tempfdivfact = f_div/256;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;            var Res4 = SCM.getResource(&quot;clk_uri/clkcr/fdiv&quot;); &#xD;&#xA;&#x9;&#x9;            SCM.setIntValue(Res4,f_div);&#xD;&#xA;&#x9;&#x9; &#xD;&#xA;&#x9;&#x9;           &#x9;var tempidivfact = i_div;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var DinominatorFact = tempfdivfact+tempidivfact;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var ActDinomiFact = DinominatorFact*2;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var MCLK = 64000/ActDinomiFact;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;MCLK=MCLK/1000;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var tempRes = SCM.getResource(&quot;ActualMCLK&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SCM.setDoubleValue(tempRes,MCLK);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;            var PCLK;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;PCLK = 2*MCLK;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var tempRes = SCM.getResource(&quot;ActualPCLK&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SCM.setDoubleValue(tempRes,PCLK);&#xD;&#xA;&#xD;&#xA;              &#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else if (value3 == 0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;                &#x9;SCM.setIntValue(Res4,0);&#xD;&#xA;      &#x9;        &#x9;var tempRespclk = SCM.getResource(&quot;PCLKselBit&quot;);&#xD;&#xA;        &#x9;    &#x9;SCM.setDoubleValue(tempRespclk,0);&#xD;&#xA;        &#x9;   &#x9;}              &#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;            &#xD;&#xA;&#x9;&#x9;&#x9;function BackwardMapping()&#xD;&#xA;            {&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;clk_uri/clkcr/pclksel&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var value3 = SCM.getIntValue(Res4);&#xD;&#xA;&#xD;&#xA;              &#x9;if (value3 == 1 ) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;                &#x9;SCM.setIntValue(currentResource,1);&#xD;&#xA;              &#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else if (value3 == 0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;                &#x9;SCM.setIntValue(currentResource,0);&#xD;&#xA;        &#x9;   &#x9;}              &#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;              " URI="http://www.infineon.com/1.0.8/app/clk002/0/clk002_erwpclkselection/1" downWardmappedList="//@consumed.29 //@consumed.19" maxValue="1" minValue="0">
+    <item name="PCLK = 2*MCLK" evalFunction="      &#xD;&#xA;            function ForwardMapping()&#xD;&#xA;            {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var value3 = SCM.getIntValue(currentResource);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;clk_uri/clkcr/pclksel&quot;);&#xD;&#xA;&#xD;&#xA;              &#x9;if (value3 == 1 ) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;                &#x9;SCM.setIntValue(Res4,1);&#xD;&#xA;      &#x9;        &#x9;var tempRespclk = SCM.getResource(&quot;PCLKselBit&quot;);&#xD;&#xA;        &#x9;    &#x9;SCM.setDoubleValue(tempRespclk,1);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;InputFreq&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var InputFreq1 = SCM.getDoubleValue(Res4);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var userfreq = &#x9;2*InputFreq1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var freq_fact=64000/userfreq;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var i_div=Math.floor(freq_fact);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (i_div==256)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;i_div=i_div-1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;            var Res3 = SCM.getResource(&quot;clk_uri/clkcr/idiv&quot;); &#xD;&#xA;&#x9;&#x9;            SCM.setIntValue(Res3,i_div);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var temp_f_div=(freq_fact-i_div)*256;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (i_div==255)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;temp_f_div=0;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var f_div;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var tempfdivfact;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (temp_f_div==0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;f_div=0;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tempfdivfact = 0;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;f_div=Math.floor(temp_f_div);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tempfdivfact = f_div/256;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;            var Res4 = SCM.getResource(&quot;clk_uri/clkcr/fdiv&quot;); &#xD;&#xA;&#x9;&#x9;            SCM.setIntValue(Res4,f_div);&#xD;&#xA;&#x9;&#x9; &#xD;&#xA;&#x9;&#x9;           &#x9;var tempidivfact = i_div;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var DinominatorFact = tempfdivfact+tempidivfact;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var ActDinomiFact = DinominatorFact*2;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var MCLK = 64000/ActDinomiFact;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;MCLK=MCLK/1000;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var tempRes = SCM.getResource(&quot;ActualMCLK&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SCM.setDoubleValue(tempRes,MCLK);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;            var PCLK;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;PCLK = 2*MCLK;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var tempRes = SCM.getResource(&quot;ActualPCLK&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SCM.setDoubleValue(tempRes,PCLK);&#xD;&#xA;&#xD;&#xA;              &#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else if (value3 == 0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;                &#x9;SCM.setIntValue(Res4,0);&#xD;&#xA;      &#x9;        &#x9;var tempRespclk = SCM.getResource(&quot;PCLKselBit&quot;);&#xD;&#xA;        &#x9;    &#x9;SCM.setDoubleValue(tempRespclk,0);&#xD;&#xA;        &#x9;   &#x9;}              &#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;            &#xD;&#xA;&#x9;&#x9;&#x9;function BackwardMapping()&#xD;&#xA;            {&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;clk_uri/clkcr/pclksel&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var value3 = SCM.getIntValue(Res4);&#xD;&#xA;&#xD;&#xA;              &#x9;if (value3 == 1 ) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;                &#x9;SCM.setIntValue(currentResource,1);&#xD;&#xA;              &#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else if (value3 == 0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;                &#x9;SCM.setIntValue(currentResource,0);&#xD;&#xA;        &#x9;   &#x9;}              &#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;              " URI="http://www.infineon.com/1.0.8/app/clk002/0/clk002_erwpclkselection/1" downWardmappedList="//@consumed.29 //@consumed.19 //@consumed.30 //@consumed.31 //@consumed.16 //@consumed.15" maxValue="1" minValue="0">
       <defaultValue xsi:type="ResourceModel:IntegerValue" value="0"/>
-      <localValue xsi:type="ResourceModel:StringValue" value="0"/>
-      <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+      <localValue xsi:type="ResourceModel:StringValue" value="1"/>
+      <globalValue xsi:type="ResourceModel:IntegerValue" value="1"/>
       <toolTipHelpDescription>PCLK is double of MCLK</toolTipHelpDescription>
     </item>
   </provided>
@@ -38,7 +38,7 @@ Valid clock range is 125 KHz to 32000 KHz.</toolTipHelpDescription>
   <provided xsi:type="ResourceModel:IntegerParameter" name="Configured PCLK" evalFunction="&#xD;&#xA;&#xD;&#xA;        function ForwardMapping()&#xD;&#xA;        {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;var Res4 = SCM.getResource(&quot;InputFreq&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;var value3 = SCM.getDoubleValue(Res4);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;var Res3 = SCM.getResource(&quot;PCLKselBit&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;var value2 = SCM.getDoubleValue(Res3);&#xD;&#xA;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        function BackwardMapping()&#xD;&#xA;        {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;var Res5 = SCM.getResource(&quot;ActualPCLK&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;var value5 = SCM.getDoubleValue(Res5);&#xD;&#xA;&#x9;&#x9;&#x9;SCM.setDoubleValue(currentResource,value5);       &#xD;&#xA;&#xD;&#xA;&#x9;&#x9; }&#xD;&#xA;&#xD;&#xA;        " URI="http://www.infineon.com/1.0.8/app/clk002/0/clk002_irpclk" maxValue="40" minValue="00">
     <defaultValue xsi:type="ResourceModel:IntegerValue" value="20"/>
     <localValue xsi:type="ResourceModel:StringValue" value="20"/>
-    <globalValue xsi:type="ResourceModel:IntegerValue" value="8"/>
+    <globalValue xsi:type="ResourceModel:IntegerValue" value="10"/>
     <toolTipHelpDescription>Configured PCLK</toolTipHelpDescription>
   </provided>
   <provided xsi:type="ResourceModel:IntegerParameter" name="Standyby Clock" evalFunction="&#xD;&#xA;        function ForwardMapping()&#xD;&#xA;        {&#xD;&#xA;&#x9;&#x9;&#x9;    var Res4 = SCM.getResource(&quot;InputFreq&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;    var Res3 = SCM.getResource(&quot;PCLKselBit&quot;);&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        function BackwardMapping()&#xD;&#xA;        {&#xD;&#xA;&#x9;&#x9;&#x9;    var Res5 = SCM.getResource(&quot;ActualMCLK&quot;);&#xD;&#xA;&#x9; &#x9;    }&#xD;&#xA;        " URI="http://www.infineon.com/1.0.8/app/clk002/0/clk002_standbyclock" maxValue="8000" minValue="0">
@@ -287,21 +287,21 @@ This frequency will used during BootROM Firmware Execution.</toolTipHelpDescript
   </provided>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri">
     <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.0"/>
-    <requiredResource uriString="peripheral/scu/0/ccu/config" uriType="LOCALTYPE"/>
+    <requiredResource uriString="peripheral/scu/*/ccu/*" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_vadcshs">
-    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.6"/>
+    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.1"/>
     <requiredResource uriString="peripheral/scu/0/ccu/clkgating/vadcshs" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" evalFunction="function resourceCondition() {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var value = Solver.getSoftwareId();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if (&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;(value == &quot;13.0101.10&quot;)||(value == &quot;13.0101.11&quot;)||(value == &quot;13.0101.9&quot;)||&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;(value == &quot;13.0101.7&quot;)||(value == &quot;13.0102.10&quot;)||(value == &quot;13.0102.11&quot;)|| &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;(value == &quot;13.0102.9&quot;)||(value == &quot;13.0102.7&quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;         return true;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;     } &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; return false;&#xD;&#xA;&#x9;&#x9;            }" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_ccu8">
     <requiredResource uriString="peripheral/scu/0/ccu/clkgating/ccu8/0" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_ccu4">
-    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.8"/>
+    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.3"/>
     <requiredResource uriString="peripheral/scu/0/ccu/clkgating/ccu4/0" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_usic">
-    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.10"/>
+    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.5"/>
     <requiredResource uriString="peripheral/scu/0/ccu/clkgating/usic/0" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" evalFunction="function resourceCondition() {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var value = Solver.getSoftwareId();&#x9;//check for all 13.0101.10, 13.0101.11 series IDs&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var value1 = Solver.getSoftwareId().substring(0,2).compareTo(&quot;11&quot;);&#x9;&#x9;//check for all 11.XXXX.X series IDs&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if ( (value == &quot;13.0101.10&quot;) || (value == &quot;13.0101.11&quot;) || (value == &quot;12.0101.11&quot;) || (value1 == 0) ) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; {&#x9;//No BCCU for 11X and 13.0101.X device ids&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;         return false;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;     } &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; return true;&#xD;&#xA;&#x9;&#x9;            }" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_bccu">
@@ -320,11 +320,11 @@ This frequency will used during BootROM Firmware Execution.</toolTipHelpDescript
     <requiredResource uriString="peripheral/scu/0/ccu/clkgating/math" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_wdt">
-    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.12"/>
+    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.7"/>
     <requiredResource uriString="peripheral/scu/0/ccu/clkgating/wdt" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_rtc">
-    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.14"/>
+    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.9"/>
     <requiredResource uriString="peripheral/scu/0/ccu/clkgating/rtc" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" evalFunction="function resourceCondition() {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var rtcres = Solver.getResource(&quot;rtc_clockseldummy&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var val = Solver.getIntValue(rtcres);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if(val  == 0) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;  return true;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return false;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}" URI="http://www.infineon.com/1.0.8/app/clk002/0/dco_uri">
@@ -341,17 +341,17 @@ This frequency will used during BootROM Firmware Execution.</toolTipHelpDescript
     <globalValue xsi:type="ResourceModel:StringValue" value="DependentApp"/>
     <requiredResource uriString="app/anacmp01/*" uriType="LOCALTYPE"/>
   </consumed>
-  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/actualpclk" upWardMappingList="//@provided.2/@item.0 //@provided.3 //@provided.4" isSystemDefined="true">
+  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/actualpclk" upWardMappingList="//@provided.2/@item.0 //@provided.3 //@provided.4 //@provided.2/@item.1" isSystemDefined="true">
+    <localValue xsi:type="ResourceModel:IntegerValue" value="10"/>
+    <globalValue xsi:type="ResourceModel:IntegerValue" value="10"/>
+    <requiredResource uriString="" uriType="LOCALTYPE"/>
+  </consumed>
+  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/actualmclk" upWardMappingList="//@provided.2/@item.0 //@provided.3 //@provided.6 //@provided.2/@item.1" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="8"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="8"/>
     <requiredResource uriString="" uriType="LOCALTYPE"/>
   </consumed>
-  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/actualmclk" upWardMappingList="//@provided.2/@item.0 //@provided.3 //@provided.6" isSystemDefined="true">
-    <localValue xsi:type="ResourceModel:IntegerValue" value="8"/>
-    <globalValue xsi:type="ResourceModel:IntegerValue" value="8"/>
-    <requiredResource uriString="" uriType="LOCALTYPE"/>
-  </consumed>
-  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/inputfreq" upWardMappingList="//@provided.2/@item.0 //@provided.3 //@provided.4 //@provided.6" isSystemDefined="true">
+  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/inputfreq" upWardMappingList="//@provided.2/@item.0 //@provided.3 //@provided.4 //@provided.6 //@provided.2/@item.1" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="1f40"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="1f40"/>
     <requiredResource uriString="" uriType="LOCALTYPE"/>
@@ -362,8 +362,8 @@ This frequency will used during BootROM Firmware Execution.</toolTipHelpDescript
     <requiredResource uriString="" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/pclkselbit" upWardMappingList="//@provided.2/@item.0 //@provided.2/@item.1 //@provided.3 //@provided.4 //@provided.6" isSystemDefined="true">
-    <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
-    <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+    <localValue xsi:type="ResourceModel:IntegerValue" value="1"/>
+    <globalValue xsi:type="ResourceModel:IntegerValue" value="1"/>
     <requiredResource uriString="" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/sswactualpclk" upWardMappingList="//@provided.8/@item.0 //@provided.9" isSystemDefined="true">
@@ -406,30 +406,29 @@ This frequency will used during BootROM Firmware Execution.</toolTipHelpDescript
     <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
     <requiredResource uriString="" uriType="LOCALTYPE"/>
   </consumed>
-  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/dco_uri" isSystemDefined="true"/>
-  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/clkcr/pclksel" upWardMappingList="//@provided.2 //@provided.2/@item.0 //@provided.2/@item.1" isSystemDefined="true">
-    <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
-    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.1"/>
-    <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
+  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/dco_uri" isSystemDefined="true">
+    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../SCU/SCU_0.dd#//@provided.11"/>
   </consumed>
-  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/clkcr/idiv" upWardMappingList="//@provided.2/@item.0 //@provided.3" isSystemDefined="true">
+  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/clkcr/pclksel" upWardMappingList="//@provided.2 //@provided.2/@item.0 //@provided.2/@item.1" isSystemDefined="true">
+    <localValue xsi:type="ResourceModel:IntegerValue" value="1"/>
+    <globalValue xsi:type="ResourceModel:IntegerValue" value="1"/>
+  </consumed>
+  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/clkcr/idiv" upWardMappingList="//@provided.2/@item.0 //@provided.3 //@provided.2/@item.1" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="4"/>
-    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.2"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="4"/>
   </consumed>
-  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/clkcr/fdiv" upWardMappingList="//@provided.2/@item.0 //@provided.3" isSystemDefined="true">
+  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/clkcr/fdiv" upWardMappingList="//@provided.2/@item.0 //@provided.3 //@provided.2/@item.1" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
-    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.3"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/clkcr/rtcclksel" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
-    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.4"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_vadcshs/cgat_clr" upWardMappingList="//@provided.13/@item.0" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
     <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.7"/>
+    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.2"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_ccu8/cgat_clr" upWardMappingList="//@provided.14/@item.0" isSystemDefined="true">
@@ -439,11 +438,13 @@ This frequency will used during BootROM Firmware Execution.</toolTipHelpDescript
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_ccu4/cgat_clr" upWardMappingList="//@provided.15/@item.0" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
     <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.9"/>
+    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.4"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_usic/cgat_clr" upWardMappingList="//@provided.16/@item.0" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
     <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.11"/>
+    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.6"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_bccu/cgat_clr" upWardMappingList="//@provided.17/@item.0" isSystemDefined="true">
@@ -469,18 +470,19 @@ This frequency will used during BootROM Firmware Execution.</toolTipHelpDescript
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_wdt/cgat_clr" upWardMappingList="//@provided.22/@item.0" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
     <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.13"/>
+    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.8"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clkgating_rtc/cgat_clr" upWardMappingList="//@provided.23/@item.0" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="0"/>
     <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.15"/>
+    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../SCU/SCU_0.dd#//@provided.10"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="0"/>
   </consumed>
-  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/frtc" isSystemDefined="true">
-    <downWardmappedList xsi:type="ResourceModel:SignalDeclaration" href="../../SCU/SCU_0.dd#//@provided.5"/>
-  </consumed>
+  <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/clk_uri/frtc" isSystemDefined="true"/>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.8/app/clk002/0/dco_uri/clkout" isSystemDefined="true">
     <downWardmappedList xsi:type="ResourceModel:SignalDeclaration" href="../../SCU/SCU_0.dd#//@provided.17"/>
+    <downWardmappedList xsi:type="ResourceModel:SignalDeclaration" href="../../SCU/SCU_0.dd#//@provided.12"/>
   </consumed>
   <propertyConstants name="uriDevice" value="Device/">
     <propertyConstants name="uriAnalogCompApp" value="app/anacmp01/">

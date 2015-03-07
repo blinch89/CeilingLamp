@@ -18,18 +18,18 @@
   18              		.section	.rodata
   19              		.align	2
   22              	UART001_Handle0:
-  23 0000 00020048 		.word	1207960064
+  23 0000 00000048 		.word	1207959552
   24 0004 00020440 		.word	1074004480
-  25 0008 0A       		.byte	10
+  25 0008 01       		.byte	1
   26 0009 000000   		.space	3
   27 000c 00020440 		.word	1074004480
-  28 0010 09       		.byte	9
+  28 0010 02       		.byte	2
   29 0011 000000   		.space	3
   30 0014 00       		.byte	0
   31 0015 00       		.byte	0
   32 0016 00       		.byte	0
   33 0017 00       		.space	1
-  34 0018 40420F00 		.word	1000000
+  34 0018 00C20100 		.word	115200
   35 001c 0700     		.short	7
   36 001e 01       		.byte	1
   37 001f 01       		.byte	1
@@ -41,8 +41,8 @@
   43 0025 00       		.byte	0
   44 0026 00       		.byte	0
   45 0027 00       		.space	1
-  46 0028 FF03     		.short	1023
-  47 002a 0000     		.short	0
+  46 0028 2701     		.short	295
+  47 002a 0100     		.short	1
   48 002c 0900     		.short	9
   49 002e 0600     		.short	6
   50 0030 00       		.byte	0
@@ -62,10 +62,10 @@
   66              		.file 6 "../Dave/Generated/src/UART001/UART001_Conf.c"
 DEFINED SYMBOLS
                             *ABS*:00000000 UART001_Conf.c
-C:\Users\blinch\AppData\Local\Temp\ccgwAqYK.s:22     .rodata:00000000 UART001_Handle0
-C:\Users\blinch\AppData\Local\Temp\ccgwAqYK.s:19     .rodata:00000000 $d
-C:\Users\blinch\AppData\Local\Temp\ccgwAqYK.s:57     .data:00000000 UART001_HandleArray
-C:\Users\blinch\AppData\Local\Temp\ccgwAqYK.s:54     .data:00000000 $d
+C:\Users\blinch\AppData\Local\Temp\ccqx7WI5.s:22     .rodata:00000000 UART001_Handle0
+C:\Users\blinch\AppData\Local\Temp\ccqx7WI5.s:19     .rodata:00000000 $d
+C:\Users\blinch\AppData\Local\Temp\ccqx7WI5.s:57     .data:00000000 UART001_HandleArray
+C:\Users\blinch\AppData\Local\Temp\ccqx7WI5.s:54     .data:00000000 $d
                            .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
                            .group:00000000 wm4.uc_id.h.35.eaf9b374d895319eacbb56387e04af18
                            .group:00000000 wm4.XMC1100.h.45.7a7cd799d7738130fcda8b83b0aa37d4
@@ -82,7 +82,7 @@ C:\Users\blinch\AppData\Local\Temp\ccgwAqYK.s:54     .data:00000000 $d
                            .group:00000000 wm4.Usic.h.90.22743468abc46f16747d12430b219aaf
                            .group:00000000 wm4.stddef.h.40.50cf36416e06376af8a9dca28536f2e4
                            .group:00000000 wm4.types.h.60.e75c47576398c648cdcf9000ace5e3d8
-                           .group:00000000 wm4.UART001_Conf.h.53.aebc8f191a793f9f63edb41ad937b6a4
+                           .group:00000000 wm4.UART001_Conf.h.53.2b978016b2a1b3f7530722d205f97ea7
                            .group:00000000 wm4.UART001.h.109.3e835815a7a59791d8bd39655f4d4cc9
 
 NO UNDEFINED SYMBOLS

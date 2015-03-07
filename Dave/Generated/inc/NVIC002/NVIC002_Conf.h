@@ -71,11 +71,11 @@ extern "C" {
 ****************************************************************************/
 #define DEBUG_APP false
   
-/* User defined function mapped to IRQ_Hdlr_26 */
-#define RxFIFOBufferEventHandler    IRQ_Hdlr_26 
+/* User defined function mapped to IRQ_Hdlr_9 */
+#define RxFIFOBufferEventHandler    IRQ_Hdlr_9 
 
-/* User defined function mapped to IRQ_Hdlr_25 */
-#define TxBufferEventHandler    IRQ_Hdlr_25 
+/* User defined function mapped to IRQ_Hdlr_10 */
+#define TxBufferEventHandler    IRQ_Hdlr_10 
 
 
 /**

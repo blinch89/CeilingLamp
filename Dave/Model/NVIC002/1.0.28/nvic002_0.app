@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="NVIC002" description="App which allows user &#xA;to configure an interrupt node.&#xA;NVIC002 App maps the user-defined &#xA;interrupt handler to the actual &#xA;interrupt node via a #define &#xA;statement." descriptionURL="/doc/html/group___n_v_i_c002_app.html" URI="http://www.infineon.com/1.0.28/app/nvic002/0">
+  <upWardMappingList xsi:type="ResourceModel:ProxyResource" href="../../UART001/1.0.24/uart001_0.app#//@consumed.51"/>
   <provided xsi:type="ResourceModel:VirtualSignal" name="Interrupt Node" URI="http://www.infineon.com/1.0.28/app/nvic002/0/nvic002_vs" requiredSignalResource="nvicnode/signal_in">
     <localValue xsi:type="ResourceModel:StringValue" value="-1"/>
     <globalValue xsi:type="ResourceModel:StringValue" value="-1"/>
@@ -12,8 +13,8 @@
   </provided>
   <provided xsi:type="ResourceModel:IntegerParameter" name="Preemption Priority" evalFunction="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;function ForwardMapping()&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var Res = SCM.getResource(&quot;nvicnode/ipr_pri&quot;); &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var Intvalue = SCM.getIntValue(Res); &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var BitShift = 6; &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var BitMask = 0x3F; &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var Intvalue1 = SCM.getIntValue(currentResource);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Intvalue = (Intvalue &amp; BitMask) | (Intvalue1 &lt;&lt; BitShift);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SCM.setIntValue(Res,Intvalue);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;function BackwardMapping()&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var Res = SCM.getResource(&quot;nvicnode/ipr_pri&quot;); &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var Intvalue = SCM.getIntValue(Res); &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var BitShift = 6; &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;var BitMask = 0xC0); &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SCM.setIntValue(currentResource,(Intvalue &amp; BitMask)>>BitShift);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;" URI="http://www.infineon.com/1.0.28/app/nvic002/0/nvic002_timmirwinterruptpriority" maxValue="3" minValue="0">
     <defaultValue xsi:type="ResourceModel:IntegerValue" value="3"/>
-    <localValue xsi:type="ResourceModel:StringValue" value="3"/>
-    <globalValue xsi:type="ResourceModel:StringValue" value="3"/>
+    <localValue xsi:type="ResourceModel:StringValue" value="0"/>
+    <globalValue xsi:type="ResourceModel:StringValue" value="0"/>
     <toolTipHelpDescription>Programmable priority level of 0-3 in steps of 64 for each interrupt node.
 0  is equivalent to 0-63,
 1 is equivalent to 64-127,
@@ -57,15 +58,15 @@
     <globalValue xsi:type="ResourceModel:StringValue" value="-1"/>
   </provided>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.28/app/nvic002/0/nvicnode">
-    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../CPU/CPU_0.dd#//@provided.5"/>
+    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../CPU/CPU_0.dd#//@provided.0"/>
     <requiredResource uriString="peripheral/cpu/0/nvic/interrupt/*" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.28/app/nvic002/0/nvicnode/signal_in" isSystemDefined="true">
-    <downWardmappedList xsi:type="ResourceModel:SignalDeclaration" href="../../CPU/CPU_0.dd#//@provided.6"/>
+    <downWardmappedList xsi:type="ResourceModel:SignalDeclaration" href="../../CPU/CPU_0.dd#//@provided.1"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.28/app/nvic002/0/nvicnode/ipr_pri" upWardMappingList="//@provided.1 //@provided.3" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="fc"/>
-    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../CPU/CPU_0.dd#//@provided.7"/>
+    <downWardmappedList xsi:type="ResourceModel:BitField" href="../../CPU/CPU_0.dd#//@provided.2"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="fc"/>
   </consumed>
   <propertyConstants name="uriDevice" value="device">

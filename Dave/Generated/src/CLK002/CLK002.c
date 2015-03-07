@@ -89,7 +89,7 @@
 **  0                    Private Macro Definitions                             **
 *******************************************************************************/
 /* Master Clock setup parameters */  
-#define   CLK002_CLKCR_PCLKSEL           (0U)
+#define   CLK002_CLKCR_PCLKSEL           (1U)
 #define   CLK002_CLKCR_IDIV              (4U)      
 #define   CLK002_CLKCR_FDIV              (0U)    
 #define   CLK002_DIRECT_ACCESS_ALLOW     (0xC0U)

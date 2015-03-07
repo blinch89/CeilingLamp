@@ -23,20 +23,13 @@
 // User defined area: Define I/O pin
 ///////////////////////////////////////////////////////////////////////
 
-// Data port and pin definition for your CPU. Depending on the way
-// port access is implemented in your Cortex CPU, the set and clr
-// mask and addresses may be the same. This example is for the
-// NXP LPC81X
-
-//#define ws2812_port_set ((uint32_t*)&LPC_GPIO_PORT->SET0)	// Address of the data port register to set the pin
-//#define ws2812_port_clr	((uint32_t*)&LPC_GPIO_PORT->CLR0)	// Address of the data port register to clear the pin
 #define ws2812_port_set ((uint32_t*)0x40040004)	//output modification register for PORT0
 #define ws2812_port_clr	((uint32_t*)0x40040004)
 
 #define ws2812_mask_set  (0x00000020)	// Bitmask to set the data out pin 5
 #define ws2812_mask_clr  (0x00200000)	// Bitmask to clear the data out pin 5
 
-//port 1 pin 1 waere (1) und (0x00020000) und ein anderes OMR vermutlich!!!
+//port 1 pin 1 would be (1) and (0x00020000) and maybe a differernt OMR!!!
 
 ///////////////////////////////////////////////////////////////////////
 // User defined area: Define CPU clock speed

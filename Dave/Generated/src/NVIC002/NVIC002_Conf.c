@@ -87,23 +87,23 @@
    
 const NVIC002_HandleType NVIC002_Handle0 = {
    /* Mapped NVIC Node */
-  .NodeID      = 26 , 
+  .NodeID      = 9 , 
   /* Node Interrupt Priority */
-  .Priority    = 3,  
+  .Priority    = 0,  
   /* Node Interrupt SubPriority */
   .SubPriority = 0,
-  /* Interrupt enable for Node26 */
+  /* Interrupt enable for Node9 */
   .InterruptEnable = 1
 };
    
 const NVIC002_HandleType NVIC002_Handle1 = {
    /* Mapped NVIC Node */
-  .NodeID      = 25 , 
+  .NodeID      = 10 , 
   /* Node Interrupt Priority */
   .Priority    = 3,  
   /* Node Interrupt SubPriority */
   .SubPriority = 0,
-  /* Interrupt enable for Node25 */
+  /* Interrupt enable for Node10 */
   .InterruptEnable = 1
 }; 
 const NVIC002_HandleType * NVIC002_HandleArray[NVIC002_NUM_INSTANCES] =

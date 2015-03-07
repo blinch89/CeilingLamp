@@ -1292,19 +1292,19 @@
  357              		.file 6 "../Dave/Generated/src/NVIC002/../../inc/NVIC002/NVIC002_Extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 NVIC002.c
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:18     .text.NVIC_EnableIRQ:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:22     .text.NVIC_EnableIRQ:00000000 NVIC_EnableIRQ
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:61     .text.NVIC_EnableIRQ:00000028 $d
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:66     .text.NVIC_SetPriority:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:70     .text.NVIC_SetPriority:00000000 NVIC_SetPriority
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:205    .text.NVIC_SetPriority:000000d8 $d
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:211    .text.NVIC002_EnableIRQ:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:215    .text.NVIC002_EnableIRQ:00000000 NVIC002_EnableIRQ
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:248    .text.NVIC002_Init:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:253    .text.NVIC002_Init:00000000 NVIC002_Init
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:307    .text.NVIC002_lInit:00000000 NVIC002_lInit
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:298    .text.NVIC002_Init:0000002c $d
-C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:303    .text.NVIC002_lInit:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:18     .text.NVIC_EnableIRQ:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:22     .text.NVIC_EnableIRQ:00000000 NVIC_EnableIRQ
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:61     .text.NVIC_EnableIRQ:00000028 $d
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:66     .text.NVIC_SetPriority:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:70     .text.NVIC_SetPriority:00000000 NVIC_SetPriority
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:205    .text.NVIC_SetPriority:000000d8 $d
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:211    .text.NVIC002_EnableIRQ:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:215    .text.NVIC002_EnableIRQ:00000000 NVIC002_EnableIRQ
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:248    .text.NVIC002_Init:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:253    .text.NVIC002_Init:00000000 NVIC002_Init
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:307    .text.NVIC002_lInit:00000000 NVIC002_lInit
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:298    .text.NVIC002_Init:0000002c $d
+C:\Users\blinch\AppData\Local\Temp\ccYFfrGe.s:303    .text.NVIC002_lInit:00000000 $t
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
                            .group:00000000 wm4.uc_id.h.35.eaf9b374d895319eacbb56387e04af18
@@ -1319,7 +1319,7 @@ C:\Users\blinch\AppData\Local\Temp\ccRCgTaY.s:303    .text.NVIC002_lInit:0000000
                            .group:00000000 wm4.core_cm0.h.135.ca70469f87e143609670bb393bfa6518
                            .group:00000000 wm4.XMC1000_RomFunctionTable.h.31.6d9a94465618f31b040dc9cea9a47ad7
                            .group:00000000 wm4.XMC1100.h.114.be3711f71ee045884346be801053f4c0
-                           .group:00000000 wm4.NVIC002_Conf.h.63.4b0a4fc0e0b94704d9839f72a73ca746
+                           .group:00000000 wm4.NVIC002_Conf.h.63.641a9396c52c65009d6d8e781079fdb4
 
 UNDEFINED SYMBOLS
 NVIC002_HandleArray

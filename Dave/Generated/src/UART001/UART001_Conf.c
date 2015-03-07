@@ -86,18 +86,18 @@
 #include "../../inc/UART001/UART001.h"
 const UART001_HandleType UART001_Handle0  = 
 {
-   .UartRegs = USIC0_CH1, /* Usic Channel offset value */
+   .UartRegs = USIC0_CH0, /* Usic Channel offset value */
    .PinHandle = {   
                  /* Tx port pin base address & pin no.*/
-                 (UART001_PORTS_TypeDef *) PORT2_BASE, (uint8_t) 10,   
+                 (UART001_PORTS_TypeDef *) PORT2_BASE, (uint8_t) 1,   
                  /* Rx port pin base address & pin no.*/
-                 (UART001_PORTS_TypeDef *) PORT2_BASE, (uint8_t) 9
+                 (UART001_PORTS_TypeDef *) PORT2_BASE, (uint8_t) 2
    				},  			
    .Mode = UART_FULLDUPLEX, /* Mode */
    .StopBit = UART_ONE_STOPBIT,/* StopBit */
    .Parity  = UART_PARITY_NONE,/* Parity */ 
    .DataBits = (uint16_t)7,/* Word Length */
-   .BaudRate  = (uint32_t)1000000,/*Baud Rate */
+   .BaudRate  = (uint32_t)115200,/*Baud Rate */
    .TxFifoEn = (bool) 1, /* Additional Transmit FIFO buffer capability enable */
    .RxFifoEn = (bool) 1, /* Additional Receive FIFO buffer capability enable */
    .TxLimit = (uint8_t)0,/* FIFO Tigger Level */
@@ -107,8 +107,8 @@ const UART001_HandleType UART001_Handle0  =
    .RecvNoiseEn = (bool)0, /* Protocol specific interrupt enable */
    .FormatErrEn = (bool)0, /* Protocol specific interrupt enable */
    .FrameFinEn = (bool)0, /* Protocol specific interrupt enable */
-   .BGR_STEP = (uint16_t)1023,  /* Baud Rate Generation step value */
-   .BGR_PDIV = (uint16_t)0,   /* Baud Rate Generation  pdiv value */
+   .BGR_STEP = (uint16_t)295,  /* Baud Rate Generation step value */
+   .BGR_PDIV = (uint16_t)1,   /* Baud Rate Generation  pdiv value */
    .BGR_DCTQ = (uint16_t)9, /* Baud Rate Generation dctq value */   
    .BGR_SP = (uint16_t)6, /* Baud Rate Generation sampling point */
    .BGR_PCTQ = (uint8_t)0  /* Baud Rate Generation pctq value */

@@ -315,176 +315,25 @@
   66 0034 FF07FFFF 		.word	-63489
   67              		.cfi_endproc
   68              	.LFE88:
-  70              		.section	.text.P0_6_set_mode,"ax",%progbits
-  71              		.align	2
-  72              		.code	16
-  73              		.thumb_func
-  75              	P0_6_set_mode:
-  76              	.LFB98:
- 251:../GPIO.h     **** 
- 252:../GPIO.h     **** __STATIC_INLINE void P0_5_set_hwsel(uint32_t config){
- 253:../GPIO.h     ****     PORT0->HWSEL &= ~0x00000c00UL;
- 254:../GPIO.h     ****     PORT0->HWSEL |= config << 10;
- 255:../GPIO.h     **** }
- 256:../GPIO.h     **** 
- 257:../GPIO.h     **** __STATIC_INLINE void P0_5_set_standard_hysteresis(){
- 258:../GPIO.h     ****     PORT0->PHCR0 &= ~0x00400000UL;
- 259:../GPIO.h     **** }
- 260:../GPIO.h     **** 
- 261:../GPIO.h     **** __STATIC_INLINE void P0_5_set_large_hysteresis(){
- 262:../GPIO.h     ****     PORT0->PHCR0 |= 0x00400000UL;
- 263:../GPIO.h     **** }
- 264:../GPIO.h     **** 
- 265:../GPIO.h     **** __STATIC_INLINE void P0_5_set(void){
- 266:../GPIO.h     ****     PORT0->OMR = 0x00000020UL;
- 267:../GPIO.h     **** }
- 268:../GPIO.h     **** 
- 269:../GPIO.h     **** __STATIC_INLINE void P0_5_reset(void){
- 270:../GPIO.h     ****     PORT0->OMR = 0x00200000UL;
- 271:../GPIO.h     **** }
- 272:../GPIO.h     **** 
- 273:../GPIO.h     **** __STATIC_INLINE void P0_5_toggle(void){
- 274:../GPIO.h     ****     PORT0->OMR = 0x00200020UL;
- 275:../GPIO.h     **** }
- 276:../GPIO.h     **** 
- 277:../GPIO.h     **** __STATIC_INLINE uint32_t P0_5_read(void){
- 278:../GPIO.h     ****     return(PORT0->IN & 0x00000020UL);
- 279:../GPIO.h     **** }
- 280:../GPIO.h     **** 
- 281:../GPIO.h     **** __STATIC_INLINE void P0_5_enable_pps(void){
- 282:../GPIO.h     ****     PORT0->PPS |= 0x00000020UL;
- 283:../GPIO.h     **** }
- 284:../GPIO.h     **** 
- 285:../GPIO.h     **** __STATIC_INLINE void P0_5_disable_pps(void){
- 286:../GPIO.h     ****     PORT0->PPS &= ~0x00000020UL;
- 287:../GPIO.h     **** }
- 288:../GPIO.h     **** 
- 289:../GPIO.h     **** __STATIC_INLINE void P0_6_set_mode(uint8_t mode){
-  77              		.loc 1 289 0
-  78              		.cfi_startproc
-  79 0000 80B5     		push	{r7, lr}
-  80              	.LCFI3:
-  81              		.cfi_def_cfa_offset 8
-  82              		.cfi_offset 7, -8
-  83              		.cfi_offset 14, -4
-  84 0002 82B0     		sub	sp, sp, #8
-  85              	.LCFI4:
-  86              		.cfi_def_cfa_offset 16
-  87 0004 00AF     		add	r7, sp, #0
-  88              	.LCFI5:
-  89              		.cfi_def_cfa_register 7
-  90 0006 021C     		mov	r2, r0
-  91 0008 FB1D     		add	r3, r7, #7
-  92 000a 1A70     		strb	r2, [r3]
- 290:../GPIO.h     ****     PORT0->IOCR4 &= ~0x00f80000UL;
-  93              		.loc 1 290 0
-  94 000c 084B     		ldr	r3, .L5
-  95 000e 084A     		ldr	r2, .L5
-  96 0010 5169     		ldr	r1, [r2, #20]
-  97 0012 084A     		ldr	r2, .L5+4
-  98 0014 0A40     		and	r2, r1
-  99 0016 5A61     		str	r2, [r3, #20]
- 291:../GPIO.h     ****     PORT0->IOCR4 |= mode << 16;
- 100              		.loc 1 291 0
- 101 0018 054B     		ldr	r3, .L5
- 102 001a 054A     		ldr	r2, .L5
- 103 001c 5169     		ldr	r1, [r2, #20]
- 104 001e FA1D     		add	r2, r7, #7
- 105 0020 1278     		ldrb	r2, [r2]
- 106 0022 1204     		lsl	r2, r2, #16
- 107 0024 0A43     		orr	r2, r1
- 108 0026 5A61     		str	r2, [r3, #20]
- 292:../GPIO.h     **** }
- 109              		.loc 1 292 0
- 110 0028 BD46     		mov	sp, r7
- 111 002a 02B0     		add	sp, sp, #8
- 112              		@ sp needed for prologue
- 113 002c 80BD     		pop	{r7, pc}
- 114              	.L6:
- 115 002e C046     		.align	2
- 116              	.L5:
- 117 0030 00000440 		.word	1074003968
- 118 0034 FFFF07FF 		.word	-16252929
- 119              		.cfi_endproc
- 120              	.LFE98:
- 122              		.section	.text.P0_6_read,"ax",%progbits
- 123              		.align	2
- 124              		.code	16
- 125              		.thumb_func
- 127              	P0_6_read:
- 128              	.LFB105:
- 293:../GPIO.h     **** 
- 294:../GPIO.h     **** __STATIC_INLINE void P0_6_set_hwsel(uint32_t config){
- 295:../GPIO.h     ****     PORT0->HWSEL &= ~0x00003000UL;
- 296:../GPIO.h     ****     PORT0->HWSEL |= config << 12;
- 297:../GPIO.h     **** }
- 298:../GPIO.h     **** 
- 299:../GPIO.h     **** __STATIC_INLINE void P0_6_set_standard_hysteresis(){
- 300:../GPIO.h     ****     PORT0->PHCR0 &= ~0x04000000UL;
- 301:../GPIO.h     **** }
- 302:../GPIO.h     **** 
- 303:../GPIO.h     **** __STATIC_INLINE void P0_6_set_large_hysteresis(){
- 304:../GPIO.h     ****     PORT0->PHCR0 |= 0x04000000UL;
- 305:../GPIO.h     **** }
- 306:../GPIO.h     **** 
- 307:../GPIO.h     **** __STATIC_INLINE void P0_6_set(void){
- 308:../GPIO.h     ****     PORT0->OMR = 0x00000040UL;
- 309:../GPIO.h     **** }
- 310:../GPIO.h     **** 
- 311:../GPIO.h     **** __STATIC_INLINE void P0_6_reset(void){
- 312:../GPIO.h     ****     PORT0->OMR = 0x00400000UL;
- 313:../GPIO.h     **** }
- 314:../GPIO.h     **** 
- 315:../GPIO.h     **** __STATIC_INLINE void P0_6_toggle(void){
- 316:../GPIO.h     ****     PORT0->OMR = 0x00400040UL;
- 317:../GPIO.h     **** }
- 318:../GPIO.h     **** 
- 319:../GPIO.h     **** __STATIC_INLINE uint32_t P0_6_read(void){
- 129              		.loc 1 319 0
- 130              		.cfi_startproc
- 131 0000 80B5     		push	{r7, lr}
- 132              	.LCFI6:
- 133              		.cfi_def_cfa_offset 8
- 134              		.cfi_offset 7, -8
- 135              		.cfi_offset 14, -4
- 136 0002 00AF     		add	r7, sp, #0
- 137              	.LCFI7:
- 138              		.cfi_def_cfa_register 7
- 320:../GPIO.h     ****     return(PORT0->IN & 0x00000040UL);
- 139              		.loc 1 320 0
- 140 0004 034B     		ldr	r3, .L9
- 141 0006 5A6A     		ldr	r2, [r3, #36]
- 142 0008 4023     		mov	r3, #64
- 143 000a 1340     		and	r3, r2
- 321:../GPIO.h     **** }
- 144              		.loc 1 321 0
- 145 000c 181C     		mov	r0, r3
- 146 000e BD46     		mov	sp, r7
- 147              		@ sp needed for prologue
- 148 0010 80BD     		pop	{r7, pc}
- 149              	.L10:
- 150 0012 C046     		.align	2
- 151              	.L9:
- 152 0014 00000440 		.word	1074003968
- 153              		.cfi_endproc
- 154              	.LFE105:
- 156              		.comm	ReadData,1,1
- 157              		.section	.rodata
- 158              		.align	2
- 159              	.LC3:
- 160 0000 556C7269 		.ascii	"Ulrich ter Horst\012\000"
- 160      63682074 
- 160      65722048 
- 160      6F727374 
- 160      0A00
- 161 0012 0000     		.section	.text.main,"ax",%progbits
- 162              		.align	2
- 163              		.global	main
- 164              		.code	16
- 165              		.thumb_func
- 167              	main:
- 168              	.LFB402:
- 169              		.file 2 "../Main.c"
+  70              		.comm	matrix,264,4
+  71              		.bss
+  72              		.align	2
+  73              	ptr:
+  74 0000 00000000 		.space	4
+  75              		.align	2
+  76              	pos:
+  77 0004 00000000 		.space	4
+  78              		.global	go
+  81              	go:
+  82 0008 00       		.space	1
+  83 0009 000000   		.section	.text.main,"ax",%progbits
+  84              		.align	2
+  85              		.global	main
+  86              		.code	16
+  87              		.thumb_func
+  89              	main:
+  90              	.LFB402:
+  91              		.file 2 "../Main.c"
    1:../Main.c     **** /*
    2:../Main.c     ****  * Main.c
    3:../Main.c     ****  *
@@ -493,424 +342,770 @@
    6:../Main.c     ****  */
    7:../Main.c     **** 
    8:../Main.c     **** #include <DAVE3.h>			//Declarations from DAVE3 Code Generation (includes SFR declaration)
-   9:../Main.c     **** #include "colorManagement.h"
+   9:../Main.c     **** #include "light_ws2812_cortex.h"
   10:../Main.c     **** #include "XMC1100.h"
   11:../Main.c     **** #include "GPIO.h"
-  12:../Main.c     **** 
-  13:../Main.c     **** void updateOnboardLEDs();
-  14:../Main.c     **** void buttonRead(void *ptr);
-  15:../Main.c     **** 
-  16:../Main.c     **** uint8_t ReadData;
-  17:../Main.c     **** 
-  18:../Main.c     **** int main(void)
-  19:../Main.c     **** {
- 170              		.loc 2 19 0
- 171              		.cfi_startproc
- 172 0000 90B5     		push	{r4, r7, lr}
- 173              	.LCFI8:
- 174              		.cfi_def_cfa_offset 12
- 175              		.cfi_offset 4, -12
- 176              		.cfi_offset 7, -8
- 177              		.cfi_offset 14, -4
- 178 0002 87B0     		sub	sp, sp, #28
- 179              	.LCFI9:
- 180              		.cfi_def_cfa_offset 40
- 181 0004 00AF     		add	r7, sp, #0
- 182              	.LCFI10:
- 183              		.cfi_def_cfa_register 7
-  20:../Main.c     **** //	status_t status;		// Declaration of return variable for DAVE3 APIs (toggle comment if required)
-  21:../Main.c     **** 	DAVE_Init();			// Initialization of DAVE Apps
- 184              		.loc 2 21 0
- 185 0006 FFF7FEFF 		bl	DAVE_Init
-  22:../Main.c     **** 	IO004_SetPin(IO004_Handle0);
- 186              		.loc 2 22 0
- 187 000a 234B     		ldr	r3, .L13
- 188 000c 5B68     		ldr	r3, [r3, #4]
- 189 000e 224A     		ldr	r2, .L13
- 190 0010 5278     		ldrb	r2, [r2, #1]
- 191 0012 0121     		mov	r1, #1
- 192 0014 081C     		mov	r0, r1
- 193 0016 9040     		lsl	r0, r0, r2
- 194 0018 021C     		mov	r2, r0
- 195 001a 5A60     		str	r2, [r3, #4]
-  23:../Main.c     **** 	P0_5_set_mode(OUTPUT_PP_GP); 	//WS2812 data pin
- 196              		.loc 2 23 0
- 197 001c 8020     		mov	r0, #128
- 198 001e FFF7FEFF 		bl	P0_5_set_mode
-  24:../Main.c     **** 	P0_6_set_mode(INPUT_PU);     	//button
- 199              		.loc 2 24 0
- 200 0022 1020     		mov	r0, #16
- 201 0024 FFF7FEFF 		bl	P0_6_set_mode
-  25:../Main.c     **** 	enum colorState state = OFF;
- 202              		.loc 2 25 0
- 203 0028 3B1C     		mov	r3, r7
- 204 002a 1333     		add	r3, r3, #19
- 205 002c 0022     		mov	r2, #0
- 206 002e 1A70     		strb	r2, [r3]
-  26:../Main.c     **** 	handle_t timer;
-  27:../Main.c     **** 	timer=SYSTM001_CreateTimer(500,SYSTM001_PERIODIC,updateOnboardLEDs,NULL);
- 207              		.loc 2 27 0
- 208 0030 FA23     		mov	r3, #250
- 209 0032 5A00     		lsl	r2, r3, #1
- 210 0034 194B     		ldr	r3, .L13+4
- 211 0036 101C     		mov	r0, r2
- 212 0038 0121     		mov	r1, #1
- 213 003a 1A1C     		mov	r2, r3
- 214 003c 0023     		mov	r3, #0
- 215 003e FFF7FEFF 		bl	SYSTM001_CreateTimer
- 216 0042 031C     		mov	r3, r0
- 217 0044 7B61     		str	r3, [r7, #20]
-  28:../Main.c     **** 	SYSTM001_StartTimer(timer);
- 218              		.loc 2 28 0
- 219 0046 7B69     		ldr	r3, [r7, #20]
- 220 0048 181C     		mov	r0, r3
- 221 004a FFF7FEFF 		bl	SYSTM001_StartTimer
-  29:../Main.c     **** 	timer=SYSTM001_CreateTimer(400,SYSTM001_PERIODIC,buttonRead,&state);
- 222              		.loc 2 29 0
- 223 004e C823     		mov	r3, #200
- 224 0050 5900     		lsl	r1, r3, #1
- 225 0052 134A     		ldr	r2, .L13+8
- 226 0054 3B1C     		mov	r3, r7
- 227 0056 1333     		add	r3, r3, #19
- 228 0058 081C     		mov	r0, r1
- 229 005a 0121     		mov	r1, #1
- 230 005c FFF7FEFF 		bl	SYSTM001_CreateTimer
- 231 0060 031C     		mov	r3, r0
- 232 0062 7B61     		str	r3, [r7, #20]
-  30:../Main.c     **** 	SYSTM001_StartTimer(timer);
- 233              		.loc 2 30 0
- 234 0064 7B69     		ldr	r3, [r7, #20]
- 235 0066 181C     		mov	r0, r3
- 236 0068 FFF7FEFF 		bl	SYSTM001_StartTimer
-  31:../Main.c     **** 
-  32:../Main.c     **** 	const uint8_t daten[] = "Ulrich ter Horst\n";
- 237              		.loc 2 32 0
- 238 006c 3B1C     		mov	r3, r7
- 239 006e 0D4A     		ldr	r2, .L13+12
- 240 0070 13CA     		ldmia	r2!, {r0, r1, r4}
- 241 0072 13C3     		stmia	r3!, {r0, r1, r4}
- 242 0074 1168     		ldr	r1, [r2]
- 243 0076 1960     		str	r1, [r3]
- 244 0078 9288     		ldrh	r2, [r2, #4]
- 245 007a 9A80     		strh	r2, [r3, #4]
-  33:../Main.c     **** 	UART001_WriteData(UART001_Handle0,'°');
- 246              		.loc 2 33 0
- 247 007c 0A4B     		ldr	r3, .L13+16
- 248 007e 1A68     		ldr	r2, [r3]
- 249 0080 C023     		mov	r3, #192
- 250 0082 5B00     		lsl	r3, r3, #1
- 251 0084 B021     		mov	r1, #176
- 252 0086 D150     		str	r1, [r2, r3]
-  34:../Main.c     **** 	UART001_WriteDataBytes(&UART001_Handle0,daten,sizeof(daten));
- 253              		.loc 2 34 0
- 254 0088 074A     		ldr	r2, .L13+16
- 255 008a 3B1C     		mov	r3, r7
- 256 008c 101C     		mov	r0, r2
- 257 008e 191C     		mov	r1, r3
- 258 0090 1222     		mov	r2, #18
- 259 0092 FFF7FEFF 		bl	UART001_WriteDataBytes
- 260              	.L12:
-  35:../Main.c     **** 	//gibt write count zurück, könnte man mal prüfen und was mit machen
-  36:../Main.c     **** 
-  37:../Main.c     **** 	while(1);
- 261              		.loc 2 37 0 discriminator 1
- 262 0096 FEE7     		b	.L12
- 263              	.L14:
- 264              		.align	2
- 265              	.L13:
- 266 0098 00000000 		.word	IO004_Handle0
- 267 009c 00000000 		.word	updateOnboardLEDs
- 268 00a0 00000000 		.word	buttonRead
- 269 00a4 00000000 		.word	.LC3
- 270 00a8 00000000 		.word	UART001_Handle0
- 271              		.cfi_endproc
- 272              	.LFE402:
- 274              		.section	.text.updateOnboardLEDs,"ax",%progbits
- 275              		.align	2
- 276              		.global	updateOnboardLEDs
- 277              		.code	16
- 278              		.thumb_func
- 280              	updateOnboardLEDs:
- 281              	.LFB403:
-  38:../Main.c     **** 	return 0;
-  39:../Main.c     **** }
-  40:../Main.c     **** 
-  41:../Main.c     **** 
-  42:../Main.c     **** void updateOnboardLEDs()
-  43:../Main.c     **** {
- 282              		.loc 2 43 0
- 283              		.cfi_startproc
- 284 0000 80B5     		push	{r7, lr}
- 285              	.LCFI11:
- 286              		.cfi_def_cfa_offset 8
- 287              		.cfi_offset 7, -8
- 288              		.cfi_offset 14, -4
- 289 0002 00AF     		add	r7, sp, #0
- 290              	.LCFI12:
- 291              		.cfi_def_cfa_register 7
-  44:../Main.c     **** 	IO004_TogglePin(IO004_Handle0);
- 292              		.loc 2 44 0
- 293 0004 094B     		ldr	r3, .L16
- 294 0006 5B68     		ldr	r3, [r3, #4]
- 295 0008 084A     		ldr	r2, .L16
- 296 000a 5278     		ldrb	r2, [r2, #1]
- 297 000c 0849     		ldr	r1, .L16+4
- 298 000e 081C     		mov	r0, r1
- 299 0010 9040     		lsl	r0, r0, r2
- 300 0012 021C     		mov	r2, r0
- 301 0014 5A60     		str	r2, [r3, #4]
-  45:../Main.c     **** 	IO004_TogglePin(IO004_Handle1);
- 302              		.loc 2 45 0
- 303 0016 074B     		ldr	r3, .L16+8
- 304 0018 5B68     		ldr	r3, [r3, #4]
- 305 001a 064A     		ldr	r2, .L16+8
- 306 001c 5278     		ldrb	r2, [r2, #1]
- 307 001e 0449     		ldr	r1, .L16+4
- 308 0020 081C     		mov	r0, r1
- 309 0022 9040     		lsl	r0, r0, r2
- 310 0024 021C     		mov	r2, r0
- 311 0026 5A60     		str	r2, [r3, #4]
-  46:../Main.c     **** }
- 312              		.loc 2 46 0
- 313 0028 BD46     		mov	sp, r7
- 314              		@ sp needed for prologue
- 315 002a 80BD     		pop	{r7, pc}
- 316              	.L17:
- 317              		.align	2
- 318              	.L16:
- 319 002c 00000000 		.word	IO004_Handle0
- 320 0030 01000100 		.word	65537
- 321 0034 00000000 		.word	IO004_Handle1
- 322              		.cfi_endproc
- 323              	.LFE403:
- 325              		.section	.text.buttonRead,"ax",%progbits
- 326              		.align	2
- 327              		.global	buttonRead
- 328              		.code	16
- 329              		.thumb_func
- 331              	buttonRead:
- 332              	.LFB404:
+  12:../Main.c     **** #include "core_cmFunc.h"
+  13:../Main.c     **** 
+  14:../Main.c     **** void updateOnboardLEDs();
+  15:../Main.c     **** void testUARTTx();
+  16:../Main.c     **** 
+  17:../Main.c     **** #define WS2812_QUANTITY 88
+  18:../Main.c     **** 
+  19:../Main.c     **** uint8_t matrix[88*3];
+  20:../Main.c     **** static unsigned char *ptr;
+  21:../Main.c     **** static unsigned int pos = 0;
+  22:../Main.c     **** volatile unsigned char go = 0;
+  23:../Main.c     **** 
+  24:../Main.c     **** 
+  25:../Main.c     **** int main(void)
+  26:../Main.c     **** {
+  92              		.loc 2 26 0
+  93              		.cfi_startproc
+  94 0000 80B5     		push	{r7, lr}
+  95              	.LCFI3:
+  96              		.cfi_def_cfa_offset 8
+  97              		.cfi_offset 7, -8
+  98              		.cfi_offset 14, -4
+  99 0002 00AF     		add	r7, sp, #0
+ 100              	.LCFI4:
+ 101              		.cfi_def_cfa_register 7
+  27:../Main.c     **** 	//status_t status;		// Declaration of return variable for DAVE3 APIs (toggle comment if required)
+  28:../Main.c     **** 	DAVE_Init();			// Initialization of DAVE Apps
+ 102              		.loc 2 28 0
+ 103 0004 FFF7FEFF 		bl	DAVE_Init
+  29:../Main.c     **** 	IO004_SetPin(IO004_Handle0);
+ 104              		.loc 2 29 0
+ 105 0008 0F4B     		ldr	r3, .L8
+ 106 000a 5B68     		ldr	r3, [r3, #4]
+ 107 000c 0E4A     		ldr	r2, .L8
+ 108 000e 5278     		ldrb	r2, [r2, #1]
+ 109 0010 0121     		mov	r1, #1
+ 110 0012 081C     		mov	r0, r1
+ 111 0014 9040     		lsl	r0, r0, r2
+ 112 0016 021C     		mov	r2, r0
+ 113 0018 5A60     		str	r2, [r3, #4]
+  30:../Main.c     **** 	P0_5_set_mode(OUTPUT_PP_GP); 	//WS2812 data pin
+ 114              		.loc 2 30 0
+ 115 001a 8020     		mov	r0, #128
+ 116 001c FFF7FEFF 		bl	P0_5_set_mode
+ 117 0020 00E0     		b	.L6
+ 118              	.L7:
+  31:../Main.c     **** 	//handle_t timer;
+  32:../Main.c     **** 	//timer=SYSTM001_CreateTimer(1000,SYSTM001_PERIODIC,testUARTTx,NULL);
+  33:../Main.c     **** 	//SYSTM001_StartTimer(timer);
+  34:../Main.c     **** 	while(1)
+  35:../Main.c     **** 	{
+  36:../Main.c     **** 		if (go==1)
+  37:../Main.c     **** 		{
+  38:../Main.c     **** 			 __disable_irq();
+  39:../Main.c     **** 			ws2812_sendarray(matrix, WS2812_QUANTITY * 3);
+  40:../Main.c     **** 			__enable_irq();
+  41:../Main.c     **** 			go=0;
+  42:../Main.c     **** 		}
+  43:../Main.c     **** 	}
+ 119              		.loc 2 43 0
+ 120 0022 C046     		mov	r8, r8
+ 121              	.L6:
+  36:../Main.c     **** 		if (go==1)
+ 122              		.loc 2 36 0
+ 123 0024 094B     		ldr	r3, .L8+4
+ 124 0026 1B78     		ldrb	r3, [r3]
+ 125 0028 DBB2     		uxtb	r3, r3
+ 126 002a 012B     		cmp	r3, #1
+ 127 002c F9D1     		bne	.L7
+ 128              	.LBB6:
+ 129              	.LBB7:
+ 130              		.file 3 "C:\\DAVE-3.1.10\\eclipse\\/../CMSIS/Include/core_cmFunc.h"
+   1:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /**************************************************************************//**
+   2:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  * @file     core_cmFunc.h
+   3:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  * @brief    CMSIS Cortex-M Core Function Access Header File
+   4:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  * @version  V3.20
+   5:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  * @date     25. February 2013
+   6:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  *
+   7:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  * @note
+   8:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  *
+   9:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  ******************************************************************************/
+  10:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /* Copyright (c) 2009 - 2013 ARM LIMITED
+  11:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  12:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    All rights reserved.
+  13:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    Redistribution and use in source and binary forms, with or without
+  14:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    modification, are permitted provided that the following conditions are met:
+  15:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    - Redistributions of source code must retain the above copyright
+  16:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****      notice, this list of conditions and the following disclaimer.
+  17:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    - Redistributions in binary form must reproduce the above copyright
+  18:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****      notice, this list of conditions and the following disclaimer in the
+  19:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****      documentation and/or other materials provided with the distribution.
+  20:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    - Neither the name of ARM nor the names of its contributors may be used
+  21:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****      to endorse or promote products derived from this software without
+  22:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****      specific prior written permission.
+  23:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    *
+  24:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  25:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  26:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  27:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
+  28:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  29:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  30:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  31:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  32:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  33:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  34:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    POSSIBILITY OF SUCH DAMAGE.
+  35:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    ---------------------------------------------------------------------------*/
+  36:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  37:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  38:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #ifndef __CORE_CMFUNC_H
+  39:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #define __CORE_CMFUNC_H
+  40:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  41:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  42:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /* ###########################  Core Function Access  ########################### */
+  43:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+  44:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+  45:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   @{
+  46:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+  47:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  48:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #if   defined ( __CC_ARM ) /*------------------RealView Compiler -----------------*/
+  49:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /* ARM armcc specific functions */
+  50:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  51:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #if (__ARMCC_VERSION < 400677)
+  52:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   #error "Please use ARM Compiler Toolchain V4.0.677 or later!"
+  53:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #endif
+  54:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  55:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /* intrinsic void __enable_irq();     */
+  56:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /* intrinsic void __disable_irq();    */
+  57:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  58:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get Control Register
+  59:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  60:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the content of the Control Register.
+  61:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  62:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               Control Register value
+  63:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+  64:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t __get_CONTROL(void)
+  65:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+  66:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regControl         __ASM("control");
+  67:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regControl);
+  68:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+  69:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  70:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  71:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Set Control Register
+  72:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  73:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function writes the given value to the Control Register.
+  74:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  75:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \param [in]    control  Control Register value to set
+  76:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+  77:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE void __set_CONTROL(uint32_t control)
+  78:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+  79:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regControl         __ASM("control");
+  80:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __regControl = control;
+  81:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+  82:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  83:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  84:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get IPSR Register
+  85:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  86:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the content of the IPSR Register.
+  87:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  88:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               IPSR Register value
+  89:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+  90:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t __get_IPSR(void)
+  91:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+  92:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regIPSR          __ASM("ipsr");
+  93:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regIPSR);
+  94:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+  95:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  96:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  97:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get APSR Register
+  98:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+  99:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the content of the APSR Register.
+ 100:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 101:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               APSR Register value
+ 102:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 103:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t __get_APSR(void)
+ 104:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 105:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regAPSR          __ASM("apsr");
+ 106:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regAPSR);
+ 107:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 108:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 109:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 110:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get xPSR Register
+ 111:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 112:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the content of the xPSR Register.
+ 113:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 114:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               xPSR Register value
+ 115:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 116:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t __get_xPSR(void)
+ 117:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 118:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regXPSR          __ASM("xpsr");
+ 119:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regXPSR);
+ 120:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 121:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 122:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 123:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get Process Stack Pointer
+ 124:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 125:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the current value of the Process Stack Pointer (PSP).
+ 126:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 127:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               PSP Register value
+ 128:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 129:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t __get_PSP(void)
+ 130:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 131:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regProcessStackPointer  __ASM("psp");
+ 132:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regProcessStackPointer);
+ 133:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 134:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 135:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 136:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Set Process Stack Pointer
+ 137:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 138:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function assigns the given value to the Process Stack Pointer (PSP).
+ 139:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 140:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \param [in]    topOfProcStack  Process Stack Pointer value to set
+ 141:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 142:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE void __set_PSP(uint32_t topOfProcStack)
+ 143:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 144:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regProcessStackPointer  __ASM("psp");
+ 145:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __regProcessStackPointer = topOfProcStack;
+ 146:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 147:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 148:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 149:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get Main Stack Pointer
+ 150:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 151:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the current value of the Main Stack Pointer (MSP).
+ 152:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 153:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               MSP Register value
+ 154:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 155:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t __get_MSP(void)
+ 156:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 157:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regMainStackPointer     __ASM("msp");
+ 158:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regMainStackPointer);
+ 159:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 160:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 161:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 162:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Set Main Stack Pointer
+ 163:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 164:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function assigns the given value to the Main Stack Pointer (MSP).
+ 165:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 166:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \param [in]    topOfMainStack  Main Stack Pointer value to set
+ 167:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 168:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE void __set_MSP(uint32_t topOfMainStack)
+ 169:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 170:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regMainStackPointer     __ASM("msp");
+ 171:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __regMainStackPointer = topOfMainStack;
+ 172:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 173:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 174:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 175:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get Priority Mask
+ 176:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 177:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the current state of the priority mask bit from the Priority Mask Registe
+ 178:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 179:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               Priority Mask value
+ 180:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 181:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t __get_PRIMASK(void)
+ 182:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 183:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regPriMask         __ASM("primask");
+ 184:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regPriMask);
+ 185:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 186:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 187:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 188:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Set Priority Mask
+ 189:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 190:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function assigns the given value to the Priority Mask Register.
+ 191:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 192:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \param [in]    priMask  Priority Mask
+ 193:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 194:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE void __set_PRIMASK(uint32_t priMask)
+ 195:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 196:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regPriMask         __ASM("primask");
+ 197:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __regPriMask = (priMask);
+ 198:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 199:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 200:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 201:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #if       (__CORTEX_M >= 0x03)
+ 202:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 203:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Enable FIQ
+ 204:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 205:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function enables FIQ interrupts by clearing the F-bit in the CPSR.
+ 206:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     Can only be executed in Privileged modes.
+ 207:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 208:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #define __enable_fault_irq                __enable_fiq
+ 209:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 210:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 211:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Disable FIQ
+ 212:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 213:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function disables FIQ interrupts by setting the F-bit in the CPSR.
+ 214:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     Can only be executed in Privileged modes.
+ 215:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 216:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #define __disable_fault_irq               __disable_fiq
+ 217:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 218:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 219:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get Base Priority
+ 220:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 221:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the current value of the Base Priority register.
+ 222:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 223:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               Base Priority register value
+ 224:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 225:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t  __get_BASEPRI(void)
+ 226:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 227:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regBasePri         __ASM("basepri");
+ 228:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regBasePri);
+ 229:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 230:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 231:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 232:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Set Base Priority
+ 233:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 234:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function assigns the given value to the Base Priority register.
+ 235:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 236:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \param [in]    basePri  Base Priority value to set
+ 237:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 238:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE void __set_BASEPRI(uint32_t basePri)
+ 239:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 240:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regBasePri         __ASM("basepri");
+ 241:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __regBasePri = (basePri & 0xff);
+ 242:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 243:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 244:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 245:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get Fault Mask
+ 246:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 247:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the current value of the Fault Mask register.
+ 248:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 249:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               Fault Mask register value
+ 250:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 251:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t __get_FAULTMASK(void)
+ 252:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 253:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regFaultMask       __ASM("faultmask");
+ 254:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regFaultMask);
+ 255:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 256:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 257:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 258:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Set Fault Mask
+ 259:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 260:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function assigns the given value to the Fault Mask register.
+ 261:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 262:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \param [in]    faultMask  Fault Mask value to set
+ 263:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 264:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE void __set_FAULTMASK(uint32_t faultMask)
+ 265:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 266:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regFaultMask       __ASM("faultmask");
+ 267:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __regFaultMask = (faultMask & (uint32_t)1);
+ 268:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 269:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 270:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #endif /* (__CORTEX_M >= 0x03) */
+ 271:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 272:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 273:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #if       (__CORTEX_M == 0x04)
+ 274:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 275:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Get FPSCR
+ 276:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 277:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function returns the current value of the Floating Point Status/Control register.
+ 278:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 279:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \return               Floating Point Status/Control register value
+ 280:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 281:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE uint32_t __get_FPSCR(void)
+ 282:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 283:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+ 284:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regfpscr         __ASM("fpscr");
+ 285:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   return(__regfpscr);
+ 286:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #else
+ 287:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****    return(0);
+ 288:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #endif
+ 289:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 290:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 291:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 292:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Set FPSCR
+ 293:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 294:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     This function assigns the given value to the Floating Point Status/Control register.
+ 295:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 296:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****     \param [in]    fpscr  Floating Point Status/Control value to set
+ 297:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 298:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
+ 299:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 300:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+ 301:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   register uint32_t __regfpscr         __ASM("fpscr");
+ 302:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __regfpscr = (fpscr);
+ 303:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #endif
+ 304:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 305:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 306:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #endif /* (__CORTEX_M == 0x04) */
+ 307:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 308:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 309:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #elif defined ( __ICCARM__ ) /*------------------ ICC Compiler -------------------*/
+ 310:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /* IAR iccarm specific functions */
+ 311:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 312:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #include <cmsis_iar.h>
+ 313:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 314:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 315:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #elif defined ( __TMS470__ ) /*---------------- TI CCS Compiler ------------------*/
+ 316:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /* TI CCS specific functions */
+ 317:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 318:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #include <cmsis_ccs.h>
+ 319:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 320:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 321:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** #elif defined ( __GNUC__ ) /*------------------ GNU Compiler ---------------------*/
+ 322:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /* GNU gcc specific functions */
+ 323:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 324:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Enable IRQ Interrupts
+ 325:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 326:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   This function enables IRQ interrupts by clearing the I-bit in the CPSR.
+ 327:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   Can only be executed in Privileged modes.
+ 328:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 329:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __enable_irq(void)
+ 330:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 331:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+ 332:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** }
+ 333:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 334:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 335:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** /** \brief  Disable IRQ Interrupts
+ 336:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** 
+ 337:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   This function disables IRQ interrupts by setting the I-bit in the CPSR.
+ 338:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   Can only be executed in Privileged modes.
+ 339:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****  */
+ 340:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __disable_irq(void)
+ 341:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h **** {
+ 342:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __ASM volatile ("cpsid i" : : : "memory");
+ 131              		.loc 3 342 0
+ 132              	@ 342 "C:\DAVE-3.1.10\eclipse\/../CMSIS/Include/core_cmFunc.h" 1
+ 133 002e 72B6     		cpsid i
+ 134              	@ 0 "" 2
+ 135              		.code	16
+ 136              	.LBE7:
+ 137              	.LBE6:
+  39:../Main.c     **** 			ws2812_sendarray(matrix, WS2812_QUANTITY * 3);
+ 138              		.loc 2 39 0
+ 139 0030 074A     		ldr	r2, .L8+8
+ 140 0032 8423     		mov	r3, #132
+ 141 0034 5B00     		lsl	r3, r3, #1
+ 142 0036 101C     		mov	r0, r2
+ 143 0038 191C     		mov	r1, r3
+ 144 003a FFF7FEFF 		bl	ws2812_sendarray
+ 145              	.LBB8:
+ 146              	.LBB9:
+ 331:C:\DAVE-3.1.10\eclipse\/../CMSIS/Include\core_cmFunc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+ 147              		.loc 3 331 0
+ 148              	@ 331 "C:\DAVE-3.1.10\eclipse\/../CMSIS/Include/core_cmFunc.h" 1
+ 149 003e 62B6     		cpsie i
+ 150              	@ 0 "" 2
+ 151              		.code	16
+ 152              	.LBE9:
+ 153              	.LBE8:
+  41:../Main.c     **** 			go=0;
+ 154              		.loc 2 41 0
+ 155 0040 024B     		ldr	r3, .L8+4
+ 156 0042 0022     		mov	r2, #0
+ 157 0044 1A70     		strb	r2, [r3]
+ 158              		.loc 2 43 0
+ 159 0046 ECE7     		b	.L7
+ 160              	.L9:
+ 161              		.align	2
+ 162              	.L8:
+ 163 0048 00000000 		.word	IO004_Handle0
+ 164 004c 00000000 		.word	go
+ 165 0050 00000000 		.word	matrix
+ 166              		.cfi_endproc
+ 167              	.LFE402:
+ 169              		.section	.text.testUARTTx,"ax",%progbits
+ 170              		.align	2
+ 171              		.global	testUARTTx
+ 172              		.code	16
+ 173              		.thumb_func
+ 175              	testUARTTx:
+ 176              	.LFB403:
+  44:../Main.c     **** 	return 0;
+  45:../Main.c     **** }
+  46:../Main.c     **** 
   47:../Main.c     **** 
   48:../Main.c     **** 
-  49:../Main.c     **** void buttonRead(void *ptr)
+  49:../Main.c     **** void testUARTTx()
   50:../Main.c     **** {
- 333              		.loc 2 50 0
- 334              		.cfi_startproc
- 335 0000 80B5     		push	{r7, lr}
- 336              	.LCFI13:
- 337              		.cfi_def_cfa_offset 8
- 338              		.cfi_offset 7, -8
- 339              		.cfi_offset 14, -4
- 340 0002 84B0     		sub	sp, sp, #16
- 341              	.LCFI14:
- 342              		.cfi_def_cfa_offset 24
- 343 0004 00AF     		add	r7, sp, #0
- 344              	.LCFI15:
- 345              		.cfi_def_cfa_register 7
- 346 0006 7860     		str	r0, [r7, #4]
-  51:../Main.c     **** 	if(!P0_6_read()) //button pressed?
- 347              		.loc 2 51 0
- 348 0008 FFF7FEFF 		bl	P0_6_read
- 349 000c 031C     		mov	r3, r0
- 350 000e 002B     		cmp	r3, #0
- 351 0010 14D1     		bne	.L18
- 352              	.LBB2:
-  52:../Main.c     **** 	{
-  53:../Main.c     **** 		enum colorState *lightState = ptr;
- 353              		.loc 2 53 0
- 354 0012 7B68     		ldr	r3, [r7, #4]
- 355 0014 FB60     		str	r3, [r7, #12]
-  54:../Main.c     **** 		if(*lightState == CYAN) *lightState = OFF; //CYAN is last Value of enum
- 356              		.loc 2 54 0
- 357 0016 FB68     		ldr	r3, [r7, #12]
- 358 0018 1B78     		ldrb	r3, [r3]
- 359 001a 082B     		cmp	r3, #8
- 360 001c 03D1     		bne	.L20
- 361              		.loc 2 54 0 is_stmt 0 discriminator 1
- 362 001e FB68     		ldr	r3, [r7, #12]
- 363 0020 0022     		mov	r2, #0
- 364 0022 1A70     		strb	r2, [r3]
- 365 0024 05E0     		b	.L21
- 366              	.L20:
-  55:../Main.c     **** 		else (*lightState)++;
- 367              		.loc 2 55 0 is_stmt 1
- 368 0026 FB68     		ldr	r3, [r7, #12]
- 369 0028 1B78     		ldrb	r3, [r3]
- 370 002a 0133     		add	r3, r3, #1
- 371 002c DAB2     		uxtb	r2, r3
- 372 002e FB68     		ldr	r3, [r7, #12]
- 373 0030 1A70     		strb	r2, [r3]
- 374              	.L21:
-  56:../Main.c     **** 		updateWS2812LEDs(*lightState);
- 375              		.loc 2 56 0
- 376 0032 FB68     		ldr	r3, [r7, #12]
- 377 0034 1B78     		ldrb	r3, [r3]
- 378 0036 181C     		mov	r0, r3
- 379 0038 FFF7FEFF 		bl	updateWS2812LEDs
- 380              	.L18:
- 381              	.LBE2:
-  57:../Main.c     **** 	}
+ 177              		.loc 2 50 0
+ 178              		.cfi_startproc
+ 179 0000 80B5     		push	{r7, lr}
+ 180              	.LCFI5:
+ 181              		.cfi_def_cfa_offset 8
+ 182              		.cfi_offset 7, -8
+ 183              		.cfi_offset 14, -4
+ 184 0002 00AF     		add	r7, sp, #0
+ 185              	.LCFI6:
+ 186              		.cfi_def_cfa_register 7
+  51:../Main.c     **** 	//const uint8_t daten[] = "ABCDEFGHIJKLMNOP\n";
+  52:../Main.c     **** 	//uint16_t written = 0;
+  53:../Main.c     **** 	//while(written < sizeof(daten)-1)
+  54:../Main.c     **** 	//	written += UART001_WriteDataBytes(&UART001_Handle0,&daten[written],sizeof(daten)-written-1);
+  55:../Main.c     **** 
+  56:../Main.c     **** 	//UART001_WriteDataBytes(&UART001_Handle0,daten,17);
+  57:../Main.c     **** 	//UART001_WriteDataMultiple(&UART001_Handle0,(uint16_t *)daten,sizeof(daten)/2);
   58:../Main.c     **** }
- 382              		.loc 2 58 0
- 383 003c BD46     		mov	sp, r7
- 384 003e 04B0     		add	sp, sp, #16
- 385              		@ sp needed for prologue
- 386 0040 80BD     		pop	{r7, pc}
- 387              		.cfi_endproc
- 388              	.LFE404:
- 390 0042 C046     		.section	.text.IRQ_Hdlr_26,"ax",%progbits
- 391              		.align	2
- 392              		.global	IRQ_Hdlr_26
- 393              		.code	16
- 394              		.thumb_func
- 396              	IRQ_Hdlr_26:
- 397              	.LFB405:
+ 187              		.loc 2 58 0
+ 188 0004 BD46     		mov	sp, r7
+ 189              		@ sp needed for prologue
+ 190 0006 80BD     		pop	{r7, pc}
+ 191              		.cfi_endproc
+ 192              	.LFE403:
+ 194              		.section	.text.updateOnboardLEDs,"ax",%progbits
+ 195              		.align	2
+ 196              		.global	updateOnboardLEDs
+ 197              		.code	16
+ 198              		.thumb_func
+ 200              	updateOnboardLEDs:
+ 201              	.LFB404:
   59:../Main.c     **** 
   60:../Main.c     **** 
   61:../Main.c     **** 
-  62:../Main.c     **** 
-  63:../Main.c     **** void RxFIFOBufferEventHandler()
-  64:../Main.c     **** {
- 398              		.loc 2 64 0
- 399              		.cfi_startproc
- 400 0000 80B5     		push	{r7, lr}
- 401              	.LCFI16:
- 402              		.cfi_def_cfa_offset 8
- 403              		.cfi_offset 7, -8
- 404              		.cfi_offset 14, -4
- 405 0002 00AF     		add	r7, sp, #0
- 406              	.LCFI17:
- 407              		.cfi_def_cfa_register 7
-  65:../Main.c     **** 	if(UART001_GetFlagStatus(&UART001_Handle0,UART001_FIFO_STD_RECV_BUF_FLAG) == UART001_SET)
- 408              		.loc 2 65 0
- 409 0004 0B4B     		ldr	r3, .L24
- 410 0006 181C     		mov	r0, r3
- 411 0008 1021     		mov	r1, #16
- 412 000a FFF7FEFF 		bl	UART001_GetFlagStatus
- 413 000e 031C     		mov	r3, r0
- 414 0010 022B     		cmp	r3, #2
- 415 0012 0CD1     		bne	.L22
-  66:../Main.c     **** 	{
-  67:../Main.c     **** 		UART001_ClearFlag(&UART001_Handle0,UART001_FIFO_STD_RECV_BUF_FLAG);
- 416              		.loc 2 67 0
- 417 0014 074B     		ldr	r3, .L24
- 418 0016 181C     		mov	r0, r3
- 419 0018 1021     		mov	r1, #16
- 420 001a FFF7FEFF 		bl	UART001_ClearFlag
-  68:../Main.c     **** 		ReadData = UART001_ReadData(UART001_Handle0);
- 421              		.loc 2 68 0
- 422 001e 054B     		ldr	r3, .L24
- 423 0020 1A68     		ldr	r2, [r3]
- 424 0022 8E23     		mov	r3, #142
- 425 0024 5B00     		lsl	r3, r3, #1
- 426 0026 D358     		ldr	r3, [r2, r3]
- 427 0028 DAB2     		uxtb	r2, r3
- 428 002a 034B     		ldr	r3, .L24+4
- 429 002c 1A70     		strb	r2, [r3]
- 430              	.L22:
-  69:../Main.c     **** 	}
-  70:../Main.c     **** }
- 431              		.loc 2 70 0
- 432 002e BD46     		mov	sp, r7
- 433              		@ sp needed for prologue
- 434 0030 80BD     		pop	{r7, pc}
- 435              	.L25:
- 436 0032 C046     		.align	2
- 437              	.L24:
- 438 0034 00000000 		.word	UART001_Handle0
- 439 0038 00000000 		.word	ReadData
- 440              		.cfi_endproc
- 441              	.LFE405:
- 443              		.section	.text.IRQ_Hdlr_25,"ax",%progbits
- 444              		.align	2
- 445              		.global	IRQ_Hdlr_25
- 446              		.code	16
- 447              		.thumb_func
- 449              	IRQ_Hdlr_25:
- 450              	.LFB406:
-  71:../Main.c     **** 
-  72:../Main.c     **** 
-  73:../Main.c     **** 
-  74:../Main.c     **** void TxBufferEventHandler()
-  75:../Main.c     **** {
- 451              		.loc 2 75 0
- 452              		.cfi_startproc
- 453 0000 80B5     		push	{r7, lr}
- 454              	.LCFI18:
- 455              		.cfi_def_cfa_offset 8
- 456              		.cfi_offset 7, -8
- 457              		.cfi_offset 14, -4
- 458 0002 00AF     		add	r7, sp, #0
- 459              	.LCFI19:
- 460              		.cfi_def_cfa_register 7
-  76:../Main.c     **** 	if(UART001_GetFlagStatus(&UART001_Handle0,UART001_FIFO_STD_TRANSMIT_BUF_FLAG) == UART001_SET)
- 461              		.loc 2 76 0
- 462 0004 074B     		ldr	r3, .L28
- 463 0006 181C     		mov	r0, r3
- 464 0008 1321     		mov	r1, #19
- 465 000a FFF7FEFF 		bl	UART001_GetFlagStatus
- 466 000e 031C     		mov	r3, r0
- 467 0010 022B     		cmp	r3, #2
- 468 0012 04D1     		bne	.L26
-  77:../Main.c     **** 	{
-  78:../Main.c     **** 		UART001_ClearFlag(&UART001_Handle0,UART001_FIFO_STD_TRANSMIT_BUF_FLAG);
- 469              		.loc 2 78 0
- 470 0014 034B     		ldr	r3, .L28
- 471 0016 181C     		mov	r0, r3
- 472 0018 1321     		mov	r1, #19
- 473 001a FFF7FEFF 		bl	UART001_ClearFlag
- 474              	.L26:
-  79:../Main.c     **** 	}
-  80:../Main.c     **** }
- 475              		.loc 2 80 0
- 476 001e BD46     		mov	sp, r7
- 477              		@ sp needed for prologue
- 478 0020 80BD     		pop	{r7, pc}
- 479              	.L29:
- 480 0022 C046     		.align	2
- 481              	.L28:
- 482 0024 00000000 		.word	UART001_Handle0
- 483              		.cfi_endproc
- 484              	.LFE406:
- 486              		.text
- 487              	.Letext0:
- 488              		.file 3 "c:\\dave-3.1.10\\arm-gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/i
- 489              		.file 4 "C:\\DAVE-3.1.10\\eclipse\\/../CMSIS/Infineon/XMC1100_series/Include/XMC1100.h"
- 490              		.file 5 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/L
- 491              		.file 6 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/U
- 492              		.file 7 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/U
- 493              		.file 8 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/I
- 494              		.file 9 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/S
- 495              		.file 10 "../colorManagement.h"
- 496              		.file 11 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/
- 497              		.file 12 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/
+  62:../Main.c     **** void updateOnboardLEDs()
+  63:../Main.c     **** {
+ 202              		.loc 2 63 0
+ 203              		.cfi_startproc
+ 204 0000 80B5     		push	{r7, lr}
+ 205              	.LCFI7:
+ 206              		.cfi_def_cfa_offset 8
+ 207              		.cfi_offset 7, -8
+ 208              		.cfi_offset 14, -4
+ 209 0002 00AF     		add	r7, sp, #0
+ 210              	.LCFI8:
+ 211              		.cfi_def_cfa_register 7
+  64:../Main.c     **** 	IO004_TogglePin(IO004_Handle0);
+ 212              		.loc 2 64 0
+ 213 0004 094B     		ldr	r3, .L12
+ 214 0006 5B68     		ldr	r3, [r3, #4]
+ 215 0008 084A     		ldr	r2, .L12
+ 216 000a 5278     		ldrb	r2, [r2, #1]
+ 217 000c 0849     		ldr	r1, .L12+4
+ 218 000e 081C     		mov	r0, r1
+ 219 0010 9040     		lsl	r0, r0, r2
+ 220 0012 021C     		mov	r2, r0
+ 221 0014 5A60     		str	r2, [r3, #4]
+  65:../Main.c     **** 	IO004_TogglePin(IO004_Handle1);
+ 222              		.loc 2 65 0
+ 223 0016 074B     		ldr	r3, .L12+8
+ 224 0018 5B68     		ldr	r3, [r3, #4]
+ 225 001a 064A     		ldr	r2, .L12+8
+ 226 001c 5278     		ldrb	r2, [r2, #1]
+ 227 001e 0449     		ldr	r1, .L12+4
+ 228 0020 081C     		mov	r0, r1
+ 229 0022 9040     		lsl	r0, r0, r2
+ 230 0024 021C     		mov	r2, r0
+ 231 0026 5A60     		str	r2, [r3, #4]
+  66:../Main.c     **** }
+ 232              		.loc 2 66 0
+ 233 0028 BD46     		mov	sp, r7
+ 234              		@ sp needed for prologue
+ 235 002a 80BD     		pop	{r7, pc}
+ 236              	.L13:
+ 237              		.align	2
+ 238              	.L12:
+ 239 002c 00000000 		.word	IO004_Handle0
+ 240 0030 01000100 		.word	65537
+ 241 0034 00000000 		.word	IO004_Handle1
+ 242              		.cfi_endproc
+ 243              	.LFE404:
+ 245              		.section	.text.USIC0_0_IRQHandler,"ax",%progbits
+ 246              		.align	2
+ 247              		.global	USIC0_0_IRQHandler
+ 248              		.code	16
+ 249              		.thumb_func
+ 251              	USIC0_0_IRQHandler:
+ 252              	.LFB405:
+  67:../Main.c     **** 
+  68:../Main.c     **** 
+  69:../Main.c     **** 
+  70:../Main.c     **** void RxFIFOBufferEventHandler()
+  71:../Main.c     **** {
+ 253              		.loc 2 71 0
+ 254              		.cfi_startproc
+ 255 0000 80B5     		push	{r7, lr}
+ 256              	.LCFI9:
+ 257              		.cfi_def_cfa_offset 8
+ 258              		.cfi_offset 7, -8
+ 259              		.cfi_offset 14, -4
+ 260 0002 82B0     		sub	sp, sp, #8
+ 261              	.LCFI10:
+ 262              		.cfi_def_cfa_offset 16
+ 263 0004 00AF     		add	r7, sp, #0
+ 264              	.LCFI11:
+ 265              		.cfi_def_cfa_register 7
+  72:../Main.c     **** 	if(UART001_GetFlagStatus(&UART001_Handle0,UART001_FIFO_STD_RECV_BUF_FLAG) == UART001_SET)
+ 266              		.loc 2 72 0
+ 267 0006 204B     		ldr	r3, .L19
+ 268 0008 181C     		mov	r0, r3
+ 269 000a 1021     		mov	r1, #16
+ 270 000c FFF7FEFF 		bl	UART001_GetFlagStatus
+ 271 0010 031C     		mov	r3, r0
+ 272 0012 022B     		cmp	r3, #2
+ 273 0014 35D1     		bne	.L14
+ 274              	.LBB10:
+  73:../Main.c     **** 	{
+  74:../Main.c     **** 		UART001_ClearFlag(&UART001_Handle0,UART001_FIFO_STD_RECV_BUF_FLAG);
+ 275              		.loc 2 74 0
+ 276 0016 1C4B     		ldr	r3, .L19
+ 277 0018 181C     		mov	r0, r3
+ 278 001a 1021     		mov	r1, #16
+ 279 001c FFF7FEFF 		bl	UART001_ClearFlag
+  75:../Main.c     **** 		unsigned char b;
+  76:../Main.c     **** 		b = UART001_ReadData(UART001_Handle0);
+ 280              		.loc 2 76 0
+ 281 0020 194B     		ldr	r3, .L19
+ 282 0022 1A68     		ldr	r2, [r3]
+ 283 0024 8E23     		mov	r3, #142
+ 284 0026 5B00     		lsl	r3, r3, #1
+ 285 0028 D258     		ldr	r2, [r2, r3]
+ 286 002a FB1D     		add	r3, r7, #7
+ 287 002c 1A70     		strb	r2, [r3]
+  77:../Main.c     **** 		if (b == 1)  {pos=0; ptr=matrix; return;}
+ 288              		.loc 2 77 0
+ 289 002e FB1D     		add	r3, r7, #7
+ 290 0030 1B78     		ldrb	r3, [r3]
+ 291 0032 012B     		cmp	r3, #1
+ 292 0034 06D1     		bne	.L16
+ 293              		.loc 2 77 0 is_stmt 0 discriminator 1
+ 294 0036 154B     		ldr	r3, .L19+4
+ 295 0038 0022     		mov	r2, #0
+ 296 003a 1A60     		str	r2, [r3]
+ 297 003c 144B     		ldr	r3, .L19+8
+ 298 003e 154A     		ldr	r2, .L19+12
+ 299 0040 1A60     		str	r2, [r3]
+ 300 0042 1EE0     		b	.L14
+ 301              	.L16:
+  78:../Main.c     **** 		if (pos == (WS2812_QUANTITY*3)) {} else {*ptr=b; ptr++; pos++;}
+ 302              		.loc 2 78 0 is_stmt 1
+ 303 0044 114B     		ldr	r3, .L19+4
+ 304 0046 1A68     		ldr	r2, [r3]
+ 305 0048 8423     		mov	r3, #132
+ 306 004a 5B00     		lsl	r3, r3, #1
+ 307 004c 9A42     		cmp	r2, r3
+ 308 004e 0ED0     		beq	.L17
+ 309              		.loc 2 78 0 is_stmt 0 discriminator 1
+ 310 0050 0F4B     		ldr	r3, .L19+8
+ 311 0052 1B68     		ldr	r3, [r3]
+ 312 0054 FA1D     		add	r2, r7, #7
+ 313 0056 1278     		ldrb	r2, [r2]
+ 314 0058 1A70     		strb	r2, [r3]
+ 315 005a 0D4B     		ldr	r3, .L19+8
+ 316 005c 1B68     		ldr	r3, [r3]
+ 317 005e 5A1C     		add	r2, r3, #1
+ 318 0060 0B4B     		ldr	r3, .L19+8
+ 319 0062 1A60     		str	r2, [r3]
+ 320 0064 094B     		ldr	r3, .L19+4
+ 321 0066 1B68     		ldr	r3, [r3]
+ 322 0068 5A1C     		add	r2, r3, #1
+ 323 006a 084B     		ldr	r3, .L19+4
+ 324 006c 1A60     		str	r2, [r3]
+ 325              	.L17:
+  79:../Main.c     **** 		if (pos == ((WS2812_QUANTITY*3)-1)) {go=1;}
+ 326              		.loc 2 79 0 is_stmt 1
+ 327 006e 074B     		ldr	r3, .L19+4
+ 328 0070 1A68     		ldr	r2, [r3]
+ 329 0072 094B     		ldr	r3, .L19+16
+ 330 0074 9A42     		cmp	r2, r3
+ 331 0076 02D1     		bne	.L18
+ 332              		.loc 2 79 0 is_stmt 0 discriminator 1
+ 333 0078 084B     		ldr	r3, .L19+20
+ 334 007a 0122     		mov	r2, #1
+ 335 007c 1A70     		strb	r2, [r3]
+ 336              	.L18:
+  80:../Main.c     **** 		updateOnboardLEDs();
+ 337              		.loc 2 80 0 is_stmt 1
+ 338 007e FFF7FEFF 		bl	updateOnboardLEDs
+ 339              	.L14:
+ 340              	.LBE10:
+  81:../Main.c     **** 	}
+  82:../Main.c     **** 
+  83:../Main.c     **** 	//UART001_WriteData(UART001_Handle0,uartInput);
+  84:../Main.c     **** }
+ 341              		.loc 2 84 0
+ 342 0082 BD46     		mov	sp, r7
+ 343 0084 02B0     		add	sp, sp, #8
+ 344              		@ sp needed for prologue
+ 345 0086 80BD     		pop	{r7, pc}
+ 346              	.L20:
+ 347              		.align	2
+ 348              	.L19:
+ 349 0088 00000000 		.word	UART001_Handle0
+ 350 008c 04000000 		.word	pos
+ 351 0090 00000000 		.word	ptr
+ 352 0094 00000000 		.word	matrix
+ 353 0098 07010000 		.word	263
+ 354 009c 00000000 		.word	go
+ 355              		.cfi_endproc
+ 356              	.LFE405:
+ 358              		.section	.text.USIC0_1_IRQHandler,"ax",%progbits
+ 359              		.align	2
+ 360              		.global	USIC0_1_IRQHandler
+ 361              		.code	16
+ 362              		.thumb_func
+ 364              	USIC0_1_IRQHandler:
+ 365              	.LFB406:
+  85:../Main.c     **** 
+  86:../Main.c     **** 
+  87:../Main.c     **** 
+  88:../Main.c     **** void TxBufferEventHandler()
+  89:../Main.c     **** {
+ 366              		.loc 2 89 0
+ 367              		.cfi_startproc
+ 368 0000 80B5     		push	{r7, lr}
+ 369              	.LCFI12:
+ 370              		.cfi_def_cfa_offset 8
+ 371              		.cfi_offset 7, -8
+ 372              		.cfi_offset 14, -4
+ 373 0002 00AF     		add	r7, sp, #0
+ 374              	.LCFI13:
+ 375              		.cfi_def_cfa_register 7
+  90:../Main.c     **** 	if(UART001_GetFlagStatus(&UART001_Handle0,UART001_FIFO_STD_TRANSMIT_BUF_FLAG) == UART001_SET)
+ 376              		.loc 2 90 0
+ 377 0004 074B     		ldr	r3, .L23
+ 378 0006 181C     		mov	r0, r3
+ 379 0008 1321     		mov	r1, #19
+ 380 000a FFF7FEFF 		bl	UART001_GetFlagStatus
+ 381 000e 031C     		mov	r3, r0
+ 382 0010 022B     		cmp	r3, #2
+ 383 0012 04D1     		bne	.L21
+  91:../Main.c     **** 		UART001_ClearFlag(&UART001_Handle0,UART001_FIFO_STD_TRANSMIT_BUF_FLAG);
+ 384              		.loc 2 91 0
+ 385 0014 034B     		ldr	r3, .L23
+ 386 0016 181C     		mov	r0, r3
+ 387 0018 1321     		mov	r1, #19
+ 388 001a FFF7FEFF 		bl	UART001_ClearFlag
+ 389              	.L21:
+  92:../Main.c     **** }
+ 390              		.loc 2 92 0
+ 391 001e BD46     		mov	sp, r7
+ 392              		@ sp needed for prologue
+ 393 0020 80BD     		pop	{r7, pc}
+ 394              	.L24:
+ 395 0022 C046     		.align	2
+ 396              	.L23:
+ 397 0024 00000000 		.word	UART001_Handle0
+ 398              		.cfi_endproc
+ 399              	.LFE406:
+ 401              		.text
+ 402              	.Letext0:
+ 403              		.file 4 "c:\\dave-3.1.10\\arm-gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/i
+ 404              		.file 5 "C:\\DAVE-3.1.10\\eclipse\\/../CMSIS/Infineon/XMC1100_series/Include/XMC1100.h"
+ 405              		.file 6 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/L
+ 406              		.file 7 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/U
+ 407              		.file 8 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/U
+ 408              		.file 9 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/I
+ 409              		.file 10 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/
+ 410              		.file 11 "C:\\DAVE3_workspace\\ws3.1.10\\CeilingLamp\\Dave\\Generated\\inc\\DAVESupport/../../inc/
 DEFINED SYMBOLS
                             *ABS*:00000000 Main.c
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:18     .text.P0_5_set_mode:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:22     .text.P0_5_set_mode:00000000 P0_5_set_mode
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:65     .text.P0_5_set_mode:00000030 $d
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:71     .text.P0_6_set_mode:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:75     .text.P0_6_set_mode:00000000 P0_6_set_mode
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:117    .text.P0_6_set_mode:00000030 $d
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:123    .text.P0_6_read:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:127    .text.P0_6_read:00000000 P0_6_read
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:152    .text.P0_6_read:00000014 $d
-                            *COM*:00000001 ReadData
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:158    .rodata:00000000 $d
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:162    .text.main:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:167    .text.main:00000000 main
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:266    .text.main:00000098 $d
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:280    .text.updateOnboardLEDs:00000000 updateOnboardLEDs
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:331    .text.buttonRead:00000000 buttonRead
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:275    .text.updateOnboardLEDs:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:319    .text.updateOnboardLEDs:0000002c $d
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:326    .text.buttonRead:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:391    .text.IRQ_Hdlr_26:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:396    .text.IRQ_Hdlr_26:00000000 IRQ_Hdlr_26
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:438    .text.IRQ_Hdlr_26:00000034 $d
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:444    .text.IRQ_Hdlr_25:00000000 $t
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:449    .text.IRQ_Hdlr_25:00000000 IRQ_Hdlr_25
-C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:482    .text.IRQ_Hdlr_25:00000024 $d
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:18     .text.P0_5_set_mode:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:22     .text.P0_5_set_mode:00000000 P0_5_set_mode
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:65     .text.P0_5_set_mode:00000030 $d
+                            *COM*:00000108 matrix
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:72     .bss:00000000 $d
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:73     .bss:00000000 ptr
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:76     .bss:00000004 pos
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:81     .bss:00000008 go
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:84     .text.main:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:89     .text.main:00000000 main
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:163    .text.main:00000048 $d
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:170    .text.testUARTTx:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:175    .text.testUARTTx:00000000 testUARTTx
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:195    .text.updateOnboardLEDs:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:200    .text.updateOnboardLEDs:00000000 updateOnboardLEDs
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:239    .text.updateOnboardLEDs:0000002c $d
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:246    .text.USIC0_0_IRQHandler:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:251    .text.USIC0_0_IRQHandler:00000000 USIC0_0_IRQHandler
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:349    .text.USIC0_0_IRQHandler:00000088 $d
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:359    .text.USIC0_1_IRQHandler:00000000 $t
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:364    .text.USIC0_1_IRQHandler:00000000 USIC0_1_IRQHandler
+C:\Users\blinch\AppData\Local\Temp\ccOKZmli.s:397    .text.USIC0_1_IRQHandler:00000024 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.1.4f34ab06ae2725aaf04d3230f4ec23a7
                            .group:00000000 wm4.XMC1100.h.45.7a7cd799d7738130fcda8b83b0aa37d4
@@ -929,21 +1124,19 @@ C:\Users\blinch\AppData\Local\Temp\ccDhwTc0.s:482    .text.IRQ_Hdlr_25:00000024 
                            .group:00000000 wm4.MULTIPLEXER.h.46.383e3edbb9cbf6e538f7c1532ef623c1
                            .group:00000000 wm4.uc_id.h.35.eaf9b374d895319eacbb56387e04af18
                            .group:00000000 wm4.Usic.h.90.22743468abc46f16747d12430b219aaf
-                           .group:00000000 wm4.UART001_Conf.h.53.aebc8f191a793f9f63edb41ad937b6a4
+                           .group:00000000 wm4.UART001_Conf.h.53.2b978016b2a1b3f7530722d205f97ea7
                            .group:00000000 wm4.UART001.h.109.3e835815a7a59791d8bd39655f4d4cc9
                            .group:00000000 wm4.IO004.h.53.442ea5eb47ad9eedc675253aa35f3107
                            .group:00000000 wm4.SYSTM001.h.64.af8873ad2b760a8c44fafec70d7e8a7e
-                           .group:00000000 wm4.NVIC002_Conf.h.63.4b0a4fc0e0b94704d9839f72a73ca746
+                           .group:00000000 wm4.NVIC002_Conf.h.63.641a9396c52c65009d6d8e781079fdb4
+                           .group:00000000 wm4.light_ws2812_cortex.h.13.9ca19df782a0fb9140a989b314117286
                            .group:00000000 wm4.GPIO.h.2.93bf17ee3a853f64308a0e4d0c9f6a08
 
 UNDEFINED SYMBOLS
 DAVE_Init
-SYSTM001_CreateTimer
-SYSTM001_StartTimer
-UART001_WriteDataBytes
+ws2812_sendarray
 IO004_Handle0
-UART001_Handle0
 IO004_Handle1
-updateWS2812LEDs
 UART001_GetFlagStatus
 UART001_ClearFlag
+UART001_Handle0

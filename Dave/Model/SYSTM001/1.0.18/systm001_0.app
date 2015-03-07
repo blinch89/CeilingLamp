@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="SYSTM001" description="App which provides software timer&#xA;interface for all non rtos&#xA; applications." descriptionURL="/doc/html/group___s_c_u___system_timer___s_y_s_t_m001_app.html" mode="SHARABLE" URI="http://www.infineon.com/1.0.18/app/systm001/0">
+<ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="SYSTM001" description="App which provides software timer&#xA;interface for all non rtos&#xA; applications." descriptionURL="/doc/html/group___s_c_u___system_timer___s_y_s_t_m001_app.html" mode="SHARABLE" URI="http://www.infineon.com/1.0.18/app/systm001/0" dirty="true">
   <provided xsi:type="ResourceModel:IntegerParameter" name="SysTick Interval in millisec" evalFunction="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;function ForwardMapping()&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#xD;&#xA;  &#x9;  &#x9;&#x9;&#x9;  var XMC1xxx=SCM.getSoftwareId().substring(0,1).compareTo(&quot;1&quot;);  &#xD;&#xA;&#x9;   &#x9;&#x9;&#x9;  if(XMC1xxx==0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9; var Res1 = SCM.getResource(&quot;clkapp/clk002_irMCLK&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;   {                  &#xD;&#xA;&#x9;                 var Res1 = SCM.getResource(&quot;clockapp/clk001_iroActualFreqSystem&quot;);          &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;   }&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  var clock = SCM.getDoubleValue(Res1);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  var Res = SCM.getResource(&quot;syst/rvr&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  var Value = SCM.getIntValue(Res); &#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  var sysinterval = SCM.getIntValue(currentResource);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  var value = ((clock * sysinterval * 1000) - 1);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  SCM.setIntValue(Res,value);&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  var tempRes = SCM.getResource(&quot;systm001_Dummy&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  SCM.setIntValue(tempRes,sysinterval);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;function BackwardMapping()&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  var tempRes = SCM.getResource(&quot;systm001_Dummy&quot;);&#xD;&#xA;                  var value = SCM.getIntValue(tempRes);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  SCM.setIntValue(currentResource,value);&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;" URI="http://www.infineon.com/1.0.18/app/systm001/0/systm001_systickinterval" downWardmappedList="//@consumed.5 //@consumed.0" maxValue="64" minValue="1">
     <defaultValue xsi:type="ResourceModel:IntegerValue" value="1"/>
     <localValue xsi:type="ResourceModel:StringValue" value="1"/>
@@ -40,7 +40,7 @@
     <requiredResource uriString="" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.18/app/systm001/0/syst">
-    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../CPU/CPU_0.dd#//@provided.0"/>
+    <downWardmappedList xsi:type="ResourceModel:ResourceGroup" href="../../CPU/CPU_0.dd#//@provided.6"/>
     <requiredResource uriString="peripheral/cpu/0/systick" uriType="LOCALTYPE"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" evalFunction="function resourceCondition() {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var value1 = Solver.getSoftwareId().substring(0,1).compareTo(&quot;1&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if((value1  == 0 )) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;  return false;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return true;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}" URI="http://www.infineon.com/1.0.18/app/systm001/0/clockapp">
@@ -52,22 +52,22 @@
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.18/app/systm001/0/syst/csr" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
-    <downWardmappedList xsi:type="ResourceModel:RegisterParameter" href="../../CPU/CPU_0.dd#//@provided.1"/>
+    <downWardmappedList xsi:type="ResourceModel:RegisterParameter" href="../../CPU/CPU_0.dd#//@provided.7"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.18/app/systm001/0/syst/rvr" upWardMappingList="//@provided.0" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="fffffffffffffc17"/>
-    <downWardmappedList xsi:type="ResourceModel:RegisterParameter" href="../../CPU/CPU_0.dd#//@provided.2"/>
+    <downWardmappedList xsi:type="ResourceModel:RegisterParameter" href="../../CPU/CPU_0.dd#//@provided.8"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="fffffffffffffc17"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.18/app/systm001/0/syst/cvr" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
-    <downWardmappedList xsi:type="ResourceModel:RegisterParameter" href="../../CPU/CPU_0.dd#//@provided.3"/>
+    <downWardmappedList xsi:type="ResourceModel:RegisterParameter" href="../../CPU/CPU_0.dd#//@provided.9"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="00000000"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.18/app/systm001/0/syst/calib" isSystemDefined="true">
     <localValue xsi:type="ResourceModel:IntegerValue" value="40000147"/>
-    <downWardmappedList xsi:type="ResourceModel:RegisterParameter" href="../../CPU/CPU_0.dd#//@provided.4"/>
+    <downWardmappedList xsi:type="ResourceModel:RegisterParameter" href="../../CPU/CPU_0.dd#//@provided.10"/>
     <globalValue xsi:type="ResourceModel:IntegerValue" value="40000147"/>
   </consumed>
   <consumed xsi:type="ResourceModel:ProxyResource" URI="http://www.infineon.com/1.0.18/app/systm001/0/syst/shpr3_pri_15" upWardMappingList="//@provided.3 //@provided.4" isSystemDefined="true">
